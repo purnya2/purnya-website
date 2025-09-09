@@ -1,0 +1,22 @@
+/* Importing Iosevka Fonts */
+@font-face {
+    font-family: 'Iosevka';
+    src: url('../assets/fonts/PkgTTC-Iosevka-32.1.0/Iosevka-Regular.ttf') format('truetype');
+    font-weight: 400; /* Regular */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Iosevka';
+    src: url('../assets/fonts/PkgTTC-Iosevka-32.1.0/Iosevka-Bold.ttf') format('truetype');
+    font-weight: 700; /* Bold */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Iosevka';
+    src: url('../assets/fontsPkgTTC-Iosevka-32.1.0/Iosevka-Light.ttf') format('truetype');
+    font-weight: 300; /* Light */
+    font-style: normal;
+}
+

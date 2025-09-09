@@ -1,0 +1,26 @@
+{
+    "well_described_images":[
+        {
+            "image_url": "https://art.ngfiles.com/images/3315000/3315106_purna232_fishing-on-a-decadent-but-weirdly-functional-bus-stop.jpg?f1688709124",
+            "redirect_url": "https://www.newgrounds.com/art/view/purna232/fishing-on-a-decadent-but-weirdly-functional-bus-stop",
+            "title":"rusty fishing",
+            "description":"fishing on a decadent but weirdly functional bus stop",
+            "tags":["rustypina", "nature"],
+            "clickable" : true
+        },
+        {
+            "image_url": "https://art.ngfiles.com/images/3315000/3315341_purna232_pina-s-shelter.png?f1688724138",
+            "redirect_url": "https://www.newgrounds.com/art/view/purna232/pina-s-shelter",
+            "title":"pina's shelter",
+            "description":"rusty pays a visit to their friend pina",
+            "tags":["rustypina", "nature"],
+            "clickable" : false
+        }
+    ],
+    "sketchy_dumps":[
+        {
+            "image_url":"",
+            "tags":[]
+        }
+    ]
+}

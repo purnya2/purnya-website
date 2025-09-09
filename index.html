@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My site!">
+    <title>Purnya's Dump</title>
+
+    <!-- Link to favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/images/icons/favicon.ico">
+
+    <!-- Link to CSS stylesheets -->
+    <link rel="stylesheet" href="./css/styles.css"> <!-- Main stylesheet -->
+    <link rel="stylesheet" href="./css/fonts.css"> <!-- Fonts, duh -->
+    <script src="./js/anime.min.js"></script>
+
+
+</head>
+
+<body id="background" style="background-image: url('/assets/images/backgrounds/index.jpg')">
+    <div style="position:absolute;top:-999px;left:-999px">
+
+    </div>
+    <audio id="random-sfx"></audio>
+
+    <img src="assets/images/ps.png" alt="Sticker" class="pssticker"
+        onclick="playAudio('www.myinstants.com/media/sounds/ps2_start_up.mp3',2);">
+
+    <div class="wrapper">
+
+
+
+        <img src="assets/images/purnya.gif" alt="Sticker" class="sticker" id="purnya"
+            onclick="playAudio('www.myinstants.com/media/sounds/burpss.mp3');">
+
+
+
+        <div class="content">
+
+            <div style="position:relative;">
+                <div class="navbar rot">
+                    <ul id="navbar-container">
+
+                    </ul>
+                    <div class="glass-specular"></div>
+
+                </div>
+
+                <div class="musicplayer rot">
+
+                    <img class="albumart" src="/assets/images/mp3_cover.jpg">
+                    <div style="position: absolute; bottom: 0;">
+                        <div class="control-menu">
+                            <div class="prev-track" onclick="prevTrack()"><i class="fas fa-backward">◁</i></div>
+
+                            <div class="playpause-track" onclick="playpauseTrack()"><i class="fas fa-play">▶</i></div>
+
+                            <div class="next-track" onclick="nextTrack()"><i class="fas fa-forward">▷</i></div>
+                        </div>
+                        <div>
+                            <marquee scrollamount="2" class="songtitle"></marquee>
+                        </div>
+
+                        <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
+
+                        <div class="seeking">
+                            <div class="current-time">00:00</div>
+                            <div>/</div>
+                            <div class="total-duration">0:00</div>
+
+                        </div>
+
+
+
+                        <div class="slider_container">
+                            <i class="fa fa-volume-down"></i>
+                            <input type="range" min="0" max="20" value="10" class="volume_slider"
+                                onchange="setVolume()">
+                            <i class="fa fa-volume-up"></i>
+                        </div>
+
+
+                    </div>
+                    <div class="glass-specular"></div>
+                    <audio id="music" src=""></audio>
+                </div>
+
+                <!-- player by adilene.net-->
+                <script>
+                    // initiate variables
+                    let track_name = document.querySelector(".songtitle");
+
+                    let playpause_btn = document.querySelector(".playpause-track");
+                    let next_btn = document.querySelector(".next-track");
+                    let prev_btn = document.querySelector(".prev-track");
+
+                    let seek_slider = document.querySelector(".seek_slider");
+                    let curr_time = document.querySelector(".current-time");
+                    let total_duration = document.querySelector(".total-duration");
+                    let volume_slider = document.querySelector(".volume_slider");
+                    let track_index = 0;
+                    let isPlaying = false;
+                    let updateTimer;
+
+                    // create new audio element
+                    let curr_track = document.getElementById("music");
+
+                    //
+                    // DEFINE YOUR SONGS HERE!!!!!
+                    // MORE THAN FOUR SONGS CAN BE ADDED!!
+                    // JUST ADD ANOTHER BRACKET WITH NAME AND PATH
+                    // CATBOX.MOE IS RECOMMENDED FOR UPLOADING MP3 FILES
+                    let track_list = [
+                        {
+                            name: "ippo.tsk - oyasumination (instrumental).mp3",
+                            path: "https://files.catbox.moe/gm7yac.mp3"
+                        },
+
+                        {
+                            name: "Tanukichan - Don't Give Up.mp3",
+                            path: "https://files.catbox.moe/shp60s.mp3"
+                        },
+
+                        {
+                            name: "Windows96 - Nome da Musica.mp3",
+                            path: "https://files.catbox.moe/4g4kny.mp3"
+                        },
+                        {
+                            name: "Sonic Coaster Pop - My Star.mp3",
+                            path: "https://files.catbox.moe/945xon.mp3",
+                        }
+
+                    ];
+                    //
+                    //
+                    //
+                    //
+                    // the default volume of the song feel free to change
+                    vid = document.getElementById("music");
+                    vid.volume = 0.1;
+
+                    function setVolume() {
+                        // Set the volume according to the
+                        // percentage of the volume slider set
+
+                        curr_track.volume = volume_slider.value / 100;
+                    }
+
+
+                    function loadTrack(track_index) {
+                        clearInterval(updateTimer);
+                        resetValues();
+
+                        // load a new track
+                        curr_track.src = track_list[track_index].path;
+                        curr_track.load();
+
+                        // update details of the track
+                        track_name.textContent = "playing " + (track_index + 1) + " of " + track_list.length + ": " + track_list[track_index].name;
+
+                        // set an interval of 1000 milliseconds for updating the seek slider
+                        updateTimer = setInterval(seekUpdate, 1000);
+
+                        // move to the next track if the current one finishes playing 
+                        curr_track.addEventListener("ended", nextTrack);
+                    }
+
+                    // reset values
+                    function resetValues() {
+                        curr_time.textContent = "0:00";
+                        total_duration.textContent = "0:00";
+                        seek_slider.value = 0;
+                    }
+
+                    // checks if song is playing
+                    function playpauseTrack() {
+                        if (!isPlaying) playTrack();
+                        else pauseTrack();
+                    }
+
+                    // plays track when play button is pressed
+                    function playTrack() {
+                        curr_track.play();
+                        isPlaying = true;
+
+                        // replace icon with the pause icon
+                        playpause_btn.innerHTML = '<i class="fas fa-pause">❚❚</i>';
+                    }
+
+                    // pauses track when pause button is pressed
+                    function pauseTrack() {
+                        curr_track.pause();
+                        isPlaying = false;
+
+                        // replace icon with the play icon
+                        playpause_btn.innerHTML = '<i class="fas fa-play">▶</i>';
+                    }
+
+                    // moves to the next track
+                    function nextTrack() {
+                        if (track_index < track_list.length - 1)
+                            track_index += 1;
+                        else track_index = 0;
+                        loadTrack(track_index);
+                        playTrack();
+                    }
+
+                    // moves to the previous track
+                    function prevTrack() {
+                        if (track_index > 0)
+                            track_index -= 1;
+                        else track_index = track_list.length;
+                        loadTrack(track_index);
+                        playTrack();
+                    }
+
+                    // seeker slider
+                    function seekTo() {
+                        seekto = curr_track.duration * (seek_slider.value / 100);
+                        curr_track.currentTime = seekto;
+                    }
+
+                    function seekUpdate() {
+                        let seekPosition = 0;
+
+                        // check if the current track duration is a legible number
+                        if (!isNaN(curr_track.duration)) {
+                            seekPosition = curr_track.currentTime * (100 / curr_track.duration);
+                            seek_slider.value = seekPosition;
+
+                            // calculate the time left and the total duration
+                            let currentMinutes = Math.floor(curr_track.currentTime / 60);
+                            let currentSeconds = Math.floor(curr_track.currentTime - currentMinutes * 60);
+                            let durationMinutes = Math.floor(curr_track.duration / 60);
+                            let durationSeconds = Math.floor(curr_track.duration - durationMinutes * 60);
+
+                            // adding a zero to the single digit time values
+                            if (currentSeconds < 10) { currentSeconds = "0" + currentSeconds; }
+                            if (durationSeconds < 10) { durationSeconds = "0" + durationSeconds; }
+                            if (currentMinutes < 10) { currentMinutes = currentMinutes; }
+                            if (durationMinutes < 10) { durationMinutes = durationMinutes; }
+
+                            curr_time.textContent = currentMinutes + ":" + currentSeconds;
+                            total_duration.textContent = durationMinutes + ":" + durationSeconds;
+                        }
+                    }
+
+                    // load the first track in the tracklist
+                    loadTrack(track_index);
+                </script>
+
+            </div>
+
+
+            <div class="rot" style="background-color: rgba(0, 0, 0, 0.125); width:100%; margin-left:100px">
+                <div class="show rot" id="area-content">
+                    <!-- here the content will be injected -->
+
+
+                </div>
+                <div class='title' onclick='titleAnim()'>purnya's dump</div>
+            </div>
+            <audio id="funny-sfx" src="https://files.catbox.moe/eme5ps.mp3"></audio>
+        </div>
+
+    </div>
+    
+    <!-- Link to JavaScript files -->
+
+
+
+    <script src="./js/main.js"></script>
+
+
+    <script>
+        // Preloading logic
+
+        const areasDict = new Map();
+
+        // this doesn't really work...
+        const imagesToPreload = [
+            '/assets/images/backgrounds/anything_else.jpg',
+            '/assets/images/backgrounds/blog.jpg',
+            '/assets/images/backgrounds/drawings.jpg',
+            '/assets/images/backgrounds/index.jpg',
+            '/assets/images/backgrounds/who_are_you.jpg',
+            '/assets/images/blogging_banner.png',
+            'https://art.ngfiles.com/images/2579000/2579245_purna232_ouuhhh.jpg',
+            '/assets/images/wip.png',
+            '/assets/images/fishingonbusbanner.png'
+
+        ];
+
+        function preloadImages(imageArray) {
+            imageArray.forEach(image => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.href = image;
+                link.as = 'image';  // Specify the type of asset
+                document.head.appendChild(link); // Add the link tag to the head
+            });
+        }
+
+        // Call the function to preload the images
+        preloadImages(imagesToPreload);
+
+
+        const areasToPreload = [
+            'anything_else',
+            'blog',
+            'drawings',
+            'index',
+            'projects',
+            'who_are_you'
+        ];
+
+        function preloadAreas(areasArray) {
+            areasArray.forEach(area => {
+
+                let area_text = fetch('/areas/' + area + '.html').then(elem => {
+                    if (!elem.ok) {
+                        console.log("not valid");
+                        return;
+                    }
+                    return elem.text();
+                })
+
+                areasDict.set(area, area_text);
+            });
+        }
+
+        preloadAreas(areasToPreload);
+
+    </script>
+
+    <script>
+
+        const elementDict = new Map();
+
+        function getOrInitializeElementData(element) {
+            if (!elementDict.has(element)) {
+                // If the element is not already in the dictionary, initialize it
+                elementDict.set(element, [0, 0, 0]);
+            }
+            return elementDict.get(element); // Return the data (array)
+        }
+
+        let mouseX = window.innerWidth / 2; // Default mouse X (center of the window)
+        let mouseY = window.innerHeight / 2; // Default mouse Y (center of the window)
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = event.pageX;
+            mouseY = event.pageY;
+        });
+
+        let lastFrameTime = 0;
+        const frameInterval = 1000 / 60; // 30 FPS
+
+
+        function updateElements() {
+            const currentTime = performance.now();
+            if (currentTime - lastFrameTime >= frameInterval) {
+                lastFrameTime = currentTime;
+
+                const elements = document.querySelectorAll('.rot');
+
+                elements.forEach((element, index) => {
+
+                    const data = getOrInitializeElementData(element);
+
+                    let currentXRot = data[0];
+                    let currentYRot = data[1];
+                    let currentDist = data[2];
+
+                    const rect = element.getBoundingClientRect();
+
+                    const top = rect.top + window.scrollY;
+                    const left = rect.left + window.scrollX;
+                    const right = rect.right + window.scrollX;
+                    const bottom = rect.bottom + window.scrollY;
+
+                    const area = (bottom - top) * (right - left) / 100000;
+
+                    const isMouseInside =
+                        mouseX >= rect.left &&
+                        mouseX <= rect.right &&
+                        mouseY >= rect.top &&
+                        mouseY <= rect.bottom;
+
+                    if (!isMouseInside) {
+
+                        const centerX = (right - left) / 2 + left;
+                        const centerY = (bottom - top) / 2 + top;
+
+                        let lim = 1.5;
+                        let xrot = clamp((mouseX - centerX) / mouseX, -lim, lim);
+                        let yrot = clamp(-(mouseY - centerY) / mouseY, -lim, lim);
+
+                        let dist = Math.sqrt(xrot ** 2 + yrot ** 2);
+
+                        let dampener = 1.6;
+
+                        currentXRot = lerp(currentXRot, xrot, 0.1) / dampener;
+                        currentYRot = lerp(currentYRot, yrot, 0.1) / dampener;
+                        currentDist = lerp(currentDist, dist, 0.1) / dampener;
+
+
+                        element.style.transform = 'rotate3d(' + currentYRot + ', ' + currentXRot + ', 0, ' + currentDist + 'rad)';
+                        element.style.transform += 'translate(' + currentXRot * 20 + 'px,' + currentYRot * -20 + 'px)';
+                    } else {
+                        currentXRot = lerp(currentXRot, 0, 0.1);
+                        currentYRot = lerp(currentYRot, 0, 0.1);
+                        currentDist = lerp(currentDist, 0, 0.1);
+
+                        element.style.transform = 'rotate3d(' + currentYRot + ', ' + currentXRot + ', 0, ' + currentDist + 'rad)';
+                        element.style.transform += 'translate(' + currentXRot * 20 + 'px,' + currentYRot * -20 + 'px)';
+
+
+                    }
+
+                    data[0] = currentXRot;
+                    data[1] = currentYRot;
+                    data[2] = currentDist;
+                });
+
+
+            }
+            requestAnimationFrame(updateElements);
+
+        };
+        function clamp(value, min, max) {
+            return Math.min(Math.max(value, min), max);
+        }
+
+        function lerp(start, end, t) {
+            return start + (end - start) * t;
+        }
+
+        updateElements();
+        function animateBanner() {
+            anime({
+                targets: '#banner',
+                translateY: [-50, 0],
+                duration: 250,
+                easing: 'easeOutCirc',
+            });
+        }
+
+        function titleAnim() {
+            var audio = document.getElementById("funny-sfx");
+            audio.currentTime = 0;
+            audio.play().then(() => {
+                anime({
+                    targets: '.title',
+                    keyframes: [
+                        { translateX: 50 },
+                        { translateX: 0 },
+                    ],
+
+                    duration: 550,
+
+                });
+            })
+
+        }
+
+        function playAudio(str, offset = 0) {
+            var audio = document.getElementById("random-sfx");
+            audio.src = 'https://' + str;
+            console.log(audio.src)
+            audio.currentTime = offset;
+            audio.play();
+        }
+
+
+    </script>
+
+    <script>
+
+        function changeArea(area_name) {
+
+            const urlParams = new URLSearchParams(window.location.search);
+            var myParam = urlParams.get('area');
+
+            if (area_name != myParam) {
+                let url = new URL(window.location);
+                url.searchParams.set('area', area_name);
+                window.history.pushState({}, '', url)
+                reloadAreaContent()
+            }
+        }
+
+        function addBlog(blog) {
+
+            const container = document.getElementById("blogs-container");
+
+            const blogPreviewContainer = document.createElement("div");
+            blogPreviewContainer.className = "blog-preview-container rot";
+
+            // Create the title container
+            const titleContainer = document.createElement("div");
+            titleContainer.id = "title";
+
+            // Create the title element
+            const titleElement = document.createElement("h4");
+            const titleLink = document.createElement("a");
+            titleLink.href = "blog/blog_area.html?id=" + blog.contentUrl + ".html"
+            titleLink.textContent = blog.title;
+            titleElement.appendChild(titleLink);
+
+            // Create the date element
+            const dateElement = document.createElement("p");
+            dateElement.id = "date";
+            dateElement.textContent = blog.date;
+
+            // Append title and date to the title container
+            titleContainer.appendChild(titleElement);
+            titleContainer.appendChild(dateElement);
+
+            // Create a horizontal rule
+            const hrElement = document.createElement("hr");
+            hrElement.className = "wave";
+
+            // Create the content paragraph
+            const contentParagraph = document.createElement("p");
+            contentParagraph.textContent = blog.description;
+
+            // Append all elements to the blog preview container
+            blogPreviewContainer.appendChild(titleContainer);
+            blogPreviewContainer.appendChild(hrElement);
+            blogPreviewContainer.appendChild(contentParagraph);
+
+            // Append the blog preview container to the main container
+            container.appendChild(blogPreviewContainer);
+
+            anime({
+                targets: blogPreviewContainer,
+                translateX: [-10, 0]
+            })
+
+        }
+
+
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        async function insertBlogs() {
+            const data = await fetchJSON('/assets/docs/blogs.json');
+            const blogs = data.blogs;
+
+            const sortedBlogs = blogs.sort((a, b) => {
+                const dateA = new Date(a.date);
+                const dateB = new Date(b.date);
+
+                return dateB - dateA;
+
+            })
+
+            for (const blog of sortedBlogs) {
+
+                addBlog(blog);
+                await delay(100);
+
+            }
+        }
+
+
+
+    </script>
+
+    <script>
+
+        function checkFileExists(url) {
+            return fetch(url, { method: "HEAD" }) // Use HEAD to avoid downloading the file
+                .then((response) => {
+                    return response.ok; // Returns true if the file exists
+                })
+                .catch(() => {
+                    return false; // Returns false if there's an error (e.g., network issue or 404)
+                });
+        }
+
+        function changeBackground(str) {
+            let bgelem = document.getElementById("background");
+
+            let url = '/assets/images/backgrounds/' + str + '.jpg';
+
+            checkFileExists(url).then((exists) => {
+                if (exists) {
+                    bgelem.style = "background-image: url(" + url + ")"
+
+                } else {
+                    bgelem.style = "background-image: url(/assets/images/backgrounds/index.jpg)"
+
+                }
+            })
+
+
+        }
+
+
+    </script>
+    <script>
+        function reloadAreaContent() {
+
+            const urlParams = new URLSearchParams(window.location.search);
+            var myParam = urlParams.get('area');
+
+            if (myParam == null) {
+                myParam = "index"
+            }
+
+
+
+            areasDict.get(myParam).then(content => {
+                if (content) {
+                    const targetDiv = document.getElementById("area-content");
+
+                    // Insert the content into the div
+                    targetDiv.innerHTML = content;
+
+                    // Re-execute script tags
+                    const scripts = targetDiv.querySelectorAll('script');
+                    console.log(scripts)
+                    scripts.forEach((script) => {
+                        const newScript = document.createElement('script');
+                        if (script.src) {
+                            // If the script has a src attribute, copy it
+                            newScript.src = script.src;
+                        } else {
+                            // Otherwise, copy the inline script content
+                            newScript.textContent = script.textContent;
+                        }
+                        document.body.appendChild(newScript); // Append the new script to the body
+                        script.remove(); // Remove the old script
+                    });
+                }
+            }).then(() => {
+                if (myParam == 'blog') {
+                    insertBlogs();
+                }
+                animateBanner();
+            });
+            changeBackground(myParam)
+        }
+
+        reloadAreaContent()
+    </script>
+
+
+
+
+</body>
+
+</html>

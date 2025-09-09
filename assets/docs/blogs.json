@@ -1,0 +1,27 @@
+{
+    "blogs":[
+        {
+            "title": "first blog",
+            "date" : "2024-12-16T00:00:00Z",
+            "description": "futuristic blog",
+            "tags":["something to be sure"],
+            "contentUrl": "first_blog"
+        },
+        {
+            "title": "first blog",
+            "date" : "2024-12-16T00:00:00Z",
+            "description": "futuristic blog",
+            "tags":["something to be sure"],
+            "contentUrl": "first_blog"
+        },
+        {
+            "title": "first blog",
+            "date" : "2024-12-16T00:00:00Z",
+            "description": "futuristic blog",
+            "tags":["something to be sure"],
+            "contentUrl": "first_blog"
+        }
+    ]
+
+    
+}
