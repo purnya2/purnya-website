@@ -93,7 +93,7 @@ body {
 
 .show {
     opacity: 0.7;
-    color:#141414 !important;
+    color: #141414 !important;
     border: solid 5px rgb(255, 255, 255);
     background-color: #ffffff;
     width: 100%;
@@ -101,9 +101,10 @@ body {
     overflow: scroll;
     box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.500);
 }
-.show:hover{
+
+.show:hover {
     opacity: 1;
-    color:inherit !important;
+    color: inherit !important;
 
 }
 
@@ -132,6 +133,18 @@ ul li:hover {
 ul li a {
     text-decoration: none;
     color: #ffffff;
+    cursor: pointer;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #ffffff !important;
+    cursor: pointer;
+}
+
+.navbar:hover ul li a {
+    text-decoration: none;
+    color: #596e81 !important;
     cursor: pointer;
 }
 
@@ -265,7 +278,7 @@ ul li a {
 }
 
 #background {
-    margin : 0;
+    margin: 0;
     width: 100%;
     height: 100vh;
     background: url('your-image.jpg') no-repeat center center;
@@ -306,12 +319,12 @@ ul li a {
 }
 
 .glass-specular {
-    
+
     position: absolute;
     inset: 0;
     z-index: -1;
     backdrop-filter: blur(4px);
-    filter: url(#lg-dist) ;
+    filter: url(#lg-dist);
     isolation: isolate;
 
 
@@ -324,58 +337,103 @@ ul li a {
     filter: none;
 }
 
-.text_with_border
-{
-    text-shadow: 
+.text_with_border {
+    text-shadow:
         /* first layer at 1px */
         -1px -1px 0px #000,
-         0px -1px 0px #000,
-         1px -1px 0px #000,
-        -1px  0px 0px #000,
-         1px  0px 0px #000,
-        -1px  1px 0px #000,
-         0px  1px 0px #000,
-         1px  1px 0px #000,
+        0px -1px 0px #000,
+        1px -1px 0px #000,
+        -1px 0px 0px #000,
+        1px 0px 0px #000,
+        -1px 1px 0px #000,
+        0px 1px 0px #000,
+        1px 1px 0px #000,
         /* second layer at 2px */
         -2px -2px 0px #000,
         -1px -2px 0px #000,
-         0px -2px 0px #000,
-         1px -2px 0px #000,
-         2px -2px 0px #000,
-         2px -1px 0px #000,
-         2px  0px 0px #000,
-         2px  1px 0px #000,
-         2px  2px 0px #000,
-         1px  2px 0px #000,
-         0px  2px 0px #000,
-        -1px  2px 0px #000,
-        -2px  2px 0px #000,
-        -2px  1px 0px #000,
-        -2px  0px 0px #000,
+        0px -2px 0px #000,
+        1px -2px 0px #000,
+        2px -2px 0px #000,
+        2px -1px 0px #000,
+        2px 0px 0px #000,
+        2px 1px 0px #000,
+        2px 2px 0px #000,
+        1px 2px 0px #000,
+        0px 2px 0px #000,
+        -1px 2px 0px #000,
+        -2px 2px 0px #000,
+        -2px 1px 0px #000,
+        -2px 0px 0px #000,
         -2px -1px 0px #000,
         /* third layer at 3px */
         -3px -3px 0px #000,
         -2px -3px 0px #000,
         -1px -3px 0px #000,
-         0px -3px 0px #000,
-         1px -3px 0px #000,
-         2px -3px 0px #000,
-         3px -3px 0px #000,
-         3px -2px 0px #000,
-         3px -1px 0px #000,
-         3px  0px 0px #000,
-         3px  1px 0px #000,
-         3px  2px 0px #000,
-         3px  3px 0px #000,
-         2px  3px 0px #000,
-         1px  3px 0px #000,
-         0px  3px 0px #000,
-        -1px  3px 0px #000,
-        -2px  3px 0px #000,
-        -3px  3px 0px #000,
-        -3px  2px 0px #000,
-        -3px  1px 0px #000,
-        -3px  0px 0px #000,
+        0px -3px 0px #000,
+        1px -3px 0px #000,
+        2px -3px 0px #000,
+        3px -3px 0px #000,
+        3px -2px 0px #000,
+        3px -1px 0px #000,
+        3px 0px 0px #000,
+        3px 1px 0px #000,
+        3px 2px 0px #000,
+        3px 3px 0px #000,
+        2px 3px 0px #000,
+        1px 3px 0px #000,
+        0px 3px 0px #000,
+        -1px 3px 0px #000,
+        -2px 3px 0px #000,
+        -3px 3px 0px #000,
+        -3px 2px 0px #000,
+        -3px 1px 0px #000,
+        -3px 0px 0px #000,
         -3px -1px 0px #000,
         -3px -2px 0px #000;
+}
+
+.fixed-corner-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 100;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fixed-corner-button:hover {
+    background-color: rgba(255, 255, 255, 1);
+    border-color: #999;
+}
+
+.fullheight {
+    height: 100vh;
+
+    .show {
+        opacity: 1;
+
+        background-color: white !important;
+    }
+
+    ul li a {
+        text-decoration: none;
+        color: #596e81;
+        cursor: pointer;
+    }
+}
+
+.fullheight-navbar {
+
+
+    margin-top: 70px;
+
+
 }

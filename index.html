@@ -19,27 +19,30 @@
 </head>
 
 <body id="background" style="background-image: url('/assets/images/backgrounds/index.jpg')">
+
+
+
     <div style="position:absolute;top:-999px;left:-999px">
 
     </div>
     <audio id="random-sfx"></audio>
 
-    <img src="assets/images/ps.png" alt="Sticker" class="pssticker"
-        onclick="playAudio('www.myinstants.com/media/sounds/ps2_start_up.mp3',2);">
+    <!--img src="assets/images/ps.png" alt="Sticker" class="pssticker"
+        onclick="playAudio('www.myinstants.com/media/sounds/ps2_start_up.mp3',2);"-->
 
     <div class="wrapper">
 
 
 
-        <img src="assets/images/purnya.gif" alt="Sticker" class="sticker" id="purnya"
-            onclick="playAudio('www.myinstants.com/media/sounds/burpss.mp3');">
+        <!--img src="assets/images/purnya.gif" alt="Sticker" class="sticker" id="purnya"
+            onclick="playAudio('www.myinstants.com/media/sounds/burpss.mp3');"-->
 
 
 
-        <div class="content">
+        <div class="content" id="content_id">
 
             <div style="position:relative;">
-                <div class="navbar rot">
+                <div id="navbar" class="navbar rot">
                     <ul id="navbar-container">
 
                     </ul>
@@ -253,19 +256,23 @@
             </div>
 
 
-            <div class="rot" style="background-color: rgba(0, 0, 0, 0.125); width:100%; margin-left:100px">
-                <div class="show rot" id="area-content">
+            <div id="area-content-above" class="rot"
+                style="background-color: rgba(0, 0, 0, 0.125); width:100%; margin-left:100px">
+                <div class="show " id="area-content">
                     <!-- here the content will be injected -->
 
-
                 </div>
+
+                <button class="fixed-corner-button" onclick="toggleFullHeight()">
+                    ↗
+                </button>
                 <div class='title' onclick='titleAnim()'>purnya's dump</div>
             </div>
             <audio id="funny-sfx" src="https://files.catbox.moe/eme5ps.mp3"></audio>
         </div>
 
     </div>
-    
+
     <!-- Link to JavaScript files -->
 
 
@@ -436,6 +443,31 @@
         function lerp(start, end, t) {
             return start + (end - start) * t;
         }
+        let already_toggled = false;
+        function toggleFullHeight() {
+            console.log("hey")
+            document.getElementById("content_id").classList.toggle("fullheight");
+            document.getElementById("area-content-above").classList.toggle("rot");
+            document.getElementById("navbar").classList.toggle("fullheight-navbar");
+            if (!already_toggled) {
+                already_toggled = true;
+                anime({
+                    targets: '#area-content',
+                    translateY: [50, 0],
+                    duration: 250,
+                    easing: 'easeOutCirc',
+                });
+            } else {
+                already_toggled = false;
+                anime({
+                    targets: '#area-content',
+                    translateY: [-10, 0],
+                    duration: 250,
+                    easing: 'spring(0.5, 500, 150, 50)'
+                });
+            }
+
+        }
 
         updateElements();
         function animateBanner() {
@@ -472,6 +504,8 @@
             audio.currentTime = offset;
             audio.play();
         }
+
+
 
 
     </script>
