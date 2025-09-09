@@ -19,9 +19,38 @@
 </head>
 
 <body id="background" style="background-image: url('/assets/images/backgrounds/index.jpg')">
+    <button onclick="closeGallery()" id="closegallery"
+        style="display: none;position: absolute; top: 5%; left: 5%; z-index: 20; background: white; border: 1px solid black; width: 30px; height: 30px; cursor: pointer;">
+        x
+    </button>
+    <div id="gallery" class="gallery-overlay" style="display:none">
 
+        <div class="gallery-content">
 
+            <div id="gallery-images">
+                <div class="gallery-image-container"
+                    style="position:absolute; top: 100px; left: 100px; transform: rotate(4deg);transition: transform 0.1s ease;">
 
+                    <h3>Nep playin</h3>
+                    <img class="gallery-image"
+                        src="https://art.ngfiles.com/images/6907000/6907395_2262846_purnya_untitled-6907395.f7d8d28e7340f6a9e6a1b8871c7ec699.jpg?f1753863093"
+                        style="width:200px;height:auto;">
+
+                </div>
+
+                <div class="gallery-image-container"
+                    style="position:absolute; top: 400px; left: 400px; transform: rotate(-4deg);">
+
+                    <h3>silly</h3>
+                    <img class="gallery-image"
+                        src="https://art.ngfiles.com/images/5137000/5137097_106240_purnya_nnep-d.fec0071f39902d9a0f29f0f6b894aa01.webp?f1697621942"
+                        style="width:300px;height:auto;">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
     <div style="position:absolute;top:-999px;left:-999px">
 
     </div>
@@ -57,7 +86,8 @@
                         <div class="control-menu">
                             <div class="prev-track" onclick="prevTrack()"><i class="fas fa-backward">◁</i></div>
 
-                            <div class="playpause-track" onclick="playpauseTrack()"><i class="fas fa-play">▶</i></div>
+                            <div class="playpause-track" onclick="playpauseTrack()"><i class="fas fa-play">▶</i>
+                            </div>
 
                             <div class="next-track" onclick="nextTrack()"><i class="fas fa-forward">▷</i></div>
                         </div>
@@ -466,6 +496,25 @@
                     easing: 'spring(0.5, 500, 150, 50)'
                 });
             }
+
+        }
+
+        function closeGallery() {
+
+            anime({
+                targets: '#gallery',
+                maxHeight: ["80%", "0%"],
+                duration: 150,
+                easing: 'easeOutCirc',
+                complete: function (anim) {
+                    const gallery = document.getElementById('gallery');
+                    gallery.style.display = 'none';
+                    const closegallery = document.getElementById('closegallery');
+                    closegallery.style.display = 'none';
+                }
+            })
+
+
 
         }
 
