@@ -14,7 +14,8 @@
                 "tags": [
                     "rustypina",
                     "nature"
-                ]
+                ],
+                "image_thumb": "assets/images/drawings/thumbs/rusty_fishing.jpg"
             },
             {
                 "image_url": "https://art.ngfiles.com/images/3315000/3315341_purna232_pina-s-shelter.png?f1688724138",
@@ -29,7 +30,8 @@
                 "tags": [
                     "rustypina",
                     "nature"
-                ]
+                ],
+                "image_thumb": "assets/images/drawings/thumbs/pina's_shelter.png"
             }
         ]
     },
@@ -49,7 +51,8 @@
                     "nepeta",
                     "adventure",
                     "ready"
-                ]
+                ],
+                "image_thumb": "assets/images/drawings/thumbs/adventure_ready.png"
             },
             {
                 "image_url": "https://files.catbox.moe/gunu69.png",
@@ -66,7 +69,8 @@
                     "nepeta",
                     "curious",
                     "attention"
-                ]
+                ],
+                "image_thumb": "assets/images/drawings/thumbs/old_drawing.png"
             },
             {
                 "image_url": "https://files.catbox.moe/8ju970.png",
@@ -83,7 +87,8 @@
                     "nepeta",
                     "sleepy",
                     "cute"
-                ]
+                ],
+                "image_thumb": "assets/images/drawings/thumbs/oh_god_oh_fuck.png"
             },
             {
                 "image_url": "https://files.catbox.moe/1wozew.png",
@@ -100,7 +105,8 @@
                     "nepeta",
                     "cozy",
                     "peaceful"
-                ]
+                ],
+                "image_thumb": "assets/images/drawings/thumbs/Noodleta.png"
             },
             {
                 "image_url": "https://files.catbox.moe/0jpb2f.png",
@@ -117,7 +123,8 @@
                     "nepeta",
                     "expression",
                     "mischief"
-                ]
+                ],
+                "image_thumb": "assets/images/drawings/thumbs/noodleta_2.png"
             },
             {
                 "image_url": "https://art.ngfiles.com/images/6907000/6907395_2262846_purnya_untitled-6907395.f7d8d28e7340f6a9e6a1b8871c7ec699.jpg?f1753863093",
@@ -128,7 +135,8 @@
                 ],
                 "width": 600,
                 "rotation": 2,
-                "tags": []
+                "tags": [],
+                "image_thumb": "assets/images/drawings/thumbs/Nep_playin.jpg"
             },
             {
                 "image_url": "https://art.ngfiles.com/images/5137000/5137097_106240_purnya_nnep-d.fec0071f39902d9a0f29f0f6b894aa01.webp?f1697621942",
@@ -140,7 +148,8 @@
                 "width": 300,
                 "height": "auto",
                 "rotation": -4,
-                "tags": []
+                "tags": [],
+                "image_thumb": "assets/images/drawings/thumbs/being_silly.webp"
             }
         ],
         "notes": {

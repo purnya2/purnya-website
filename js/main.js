@@ -1,5 +1,5 @@
-
-
+window.galleryscale = 1;
+window.galleryscaleTarget = 1;
 
 function loadHeader() {
     // Use fetch to load the external HTML file (header.html)
@@ -40,3 +40,4 @@ async function fetchJSON(str) {
 
 
 }
+

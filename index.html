@@ -24,7 +24,6 @@
         x
     </button>
     <div id="gallery" class="gallery-overlay" style="display:none">
-
         <div class="gallery-content">
 
             <div id="gallery-images">
@@ -48,6 +47,7 @@
 
                 </div>
             </div>
+
         </div>
 
     </div>
@@ -286,8 +286,7 @@
             </div>
 
 
-            <div id="area-content-above" class="rot"
-                style="background-color: rgba(0, 0, 0, 0.125); width:100%; margin-left:100px">
+            <div id="area-content-above" class="rot" style="background-color: rgba(0, 0, 0, 0.125);">
                 <div class="show " id="area-content">
                     <!-- here the content will be injected -->
 
@@ -396,6 +395,12 @@
 
 
         function updateElements() {
+            if ((Math.abs(window.galleryscaleTarget - window.galleryscale)) > 0.005) {
+                window.galleryscale = lerp(window.galleryscale, window.galleryscaleTarget, 0.1);
+                const galleryContent = document.querySelector('.gallery-content');
+                galleryContent.style.transform = 'scale(' + window.galleryscale + ')';
+            }
+
             const currentTime = performance.now();
             if (currentTime - lastFrameTime >= frameInterval) {
                 lastFrameTime = currentTime;
@@ -475,7 +480,6 @@
         }
         let already_toggled = false;
         function toggleFullHeight() {
-            console.log("hey")
             document.getElementById("content_id").classList.toggle("fullheight");
             document.getElementById("area-content-above").classList.toggle("rot");
             document.getElementById("navbar").classList.toggle("fullheight-navbar");
