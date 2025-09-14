@@ -18,7 +18,7 @@ from io import BytesIO
 import re
 
 
-base_width = 600
+base_width = 1000
 
 def main():
     if(len(sys.argv) <3):
@@ -83,9 +83,9 @@ def main():
                     hsize = int((float(img.size[1]) * float(ratio)))
                     newimg = img.resize((base_width, hsize), Image.Resampling.LANCZOS)
 
-                    new_filename = image["title"].replace(" ", "_") + extension
+                    new_filename = image["title"].replace(" ", "_") + ".webp"
                     new_file_path = dest_path+new_filename
-                    newimg.save(new_file_path)
+                    newimg.save(new_file_path, 'webp', optimize = True, quality = 50)
                     
                     print(f"Saved thumbnail: {new_file_path}")
                     time.sleep(1) 

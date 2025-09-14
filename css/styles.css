@@ -11,7 +11,8 @@ body {
 
     overflow: hidden;
     min-height: 100vh;
-
+    scrollbar-color: black white;
+    scrollbar-width: thin;
 
 }
 
@@ -155,6 +156,10 @@ ul li a {
     cursor: pointer;
 }
 
+#navbar-burger {
+    display: none;
+}
+
 .form {
     width: 50%;
     border-radius: 25px;
@@ -278,11 +283,8 @@ ul li a {
 #area-content {
     overflow-x: hidden;
     overflow-y: scroll;
-    /* Enables scrolling */
-    scrollbar-width: none;
-    /* For Firefox */
-    -ms-overflow-style: none;
-    /* For Internet Explorer and Edge */
+    scrollbar-width: thin;
+    -ms-overflow-style: thin;
 }
 
 #background {
@@ -494,6 +496,8 @@ ul li a {
 }
 
 .gallery-image-container {
+    cursor: pointer;
+
     opacity: 0;
 
     transition: transform 0.1s ease, scale 0.2s ease;
@@ -644,6 +648,44 @@ ul li a {
         opacity: 1;
         color: inherit !important;
 
+    }
+
+    #navbar-burger {
+        background-color: black;
+        display: block;
+        z-index: 10;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 0px;
+        margin: 10px;
+        overflow: hidden;
+        max-height: 20px;
+        max-width: 50px;
+        border: double;
+        border-color: white;
+        transition: max-height 0.2s ease, max-width 0.2s ease;
+    }
+
+    #burger-title {
+        margin: 0;
+        color: white;
+    }
+
+    #burger-title.hide {
+        display: none;
+    }
+
+
+
+
+    #navbar-burger.open {
+        padding: 10px;
+        max-width: 200px;
+
+        max-height: 200px;
+        overflow: hidden;
+        transition: max-height 0.2s ease, max-width 0.2s ease;
     }
 
 }

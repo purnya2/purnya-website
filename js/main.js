@@ -1,6 +1,11 @@
 window.galleryscale = 1;
 window.galleryscaleTarget = 1;
 
+window.isFocusingOnImage = false;
+window.clickedImage = false;
+
+window.enableSounds = true;
+
 function loadHeader() {
     // Use fetch to load the external HTML file (header.html)
     fetch('components/navbar.html')
@@ -14,6 +19,8 @@ function loadHeader() {
         .then(data => {
             // Inject the fetched HTML content into the container
             document.getElementById('navbar-container').innerHTML = data;
+            document.getElementById('navbar-container-burger').innerHTML = data;
+
         })
         .catch(error => {
             // If there's an error, log it to the console
@@ -40,4 +47,32 @@ async function fetchJSON(str) {
 
 
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const navbarBurger = document.getElementById('navbar-burger');
+
+
+    navbarBurger.addEventListener('click', () => {
+        const burgertitle = document.getElementById('burger-title');
+
+        navbarBurger.classList.toggle('open');
+        burgertitle.classList.toggle('hide')
+    });
+
+    navbarBurger.addEventListener('mouseenter', () => {
+        const burgertitle = document.getElementById('burger-title');
+
+        navbarBurger.className = 'open';
+        burgertitle.className = 'hide';
+
+    });
+    navbarBurger.addEventListener('mouseleave', () => {
+        const burgertitle = document.getElementById('burger-title');
+
+        navbarBurger.classList = [];
+        burgertitle.className = '';
+
+    });
+
+});
 
