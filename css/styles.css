@@ -574,6 +574,26 @@ ul li a {
 }
 
 @media (max-width: 850px) {
+
+    body {
+    background-color: #f0f8ff;
+    background-image: url('../assets/images/backgrounds/index.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    font-family: 'Iosevka', sans-serif;
+    font-weight: regular;
+    font-size: larger;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    min-height: 100%;
+    scrollbar-color: black white;
+    scrollbar-width: auto;
+
+}
     .fixed-corner-button {
         display: none;
     }
@@ -581,6 +601,9 @@ ul li a {
     .wrapper {
         position: relative;
         height: 100%;
+        overflow: hidden;
+        border: solid 4px rgb(255, 255, 255);
+
     }
 
     #background {
@@ -629,17 +652,17 @@ ul li a {
 
     #area-content {
         overflow-x: hidden;
-        overflow-y: scroll;
+        overflow-y: visible;
     }
 
     .show {
         opacity: 1;
         color: #141414 !important;
-        border: solid 5px rgb(255, 255, 255);
+        border: none;
         background-color: #ffffff;
         width: 100%;
         height: 100%;
-        overflow: scroll;
+        overflow: visible;
         box-shadow: none;
 
     }
@@ -660,8 +683,8 @@ ul li a {
         padding: 0px;
         margin: 10px;
         overflow: hidden;
-        max-height: 20px;
-        max-width: 50px;
+        max-height: 40px;
+        max-width: 70px;
         border: double;
         border-color: white;
         transition: max-height 0.2s ease, max-width 0.2s ease;
@@ -676,9 +699,6 @@ ul li a {
         display: none;
     }
 
-
-
-
     #navbar-burger.open {
         padding: 10px;
         max-width: 200px;
@@ -687,5 +707,7 @@ ul li a {
         overflow: hidden;
         transition: max-height 0.2s ease, max-width 0.2s ease;
     }
+
+
 
 }

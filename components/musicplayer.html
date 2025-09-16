@@ -1,0 +1,202 @@
+<div class="musicplayer rot">
+
+  <img class="albumart" src="/assets/images/mp3_cover.jpg">
+  <div style="position: absolute; bottom: 0;">
+    <div class="control-menu">
+      <div class="prev-track" onclick="prevTrack()"><i class="fas fa-backward">◁</i></div>
+
+      <div class="playpause-track" onclick="playpauseTrack()"><i class="fas fa-play">▶</i>
+      </div>
+
+      <div class="next-track" onclick="nextTrack()"><i class="fas fa-forward">▷</i></div>
+    </div>
+    <div>
+      <marquee scrollamount="2" class="songtitle"></marquee>
+    </div>
+
+    <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
+
+    <div class="seeking">
+      <div class="current-time">00:00</div>
+      <div>/</div>
+      <div class="total-duration">0:00</div>
+
+    </div>
+
+
+
+    <div class="slider_container">
+      <i class="fa fa-volume-down"></i>
+      <input type="range" min="0" max="20" value="10" class="volume_slider" onchange="setVolume()">
+      <i class="fa fa-volume-up"></i>
+    </div>
+
+
+  </div>
+  <div class="glass-specular"></div>
+  <audio id="music" src=""></audio>
+</div>
+
+<!-- player by adilene.net-->
+<script>
+  // initiate variables
+  let track_name = document.querySelector(".songtitle");
+
+  let playpause_btn = document.querySelector(".playpause-track");
+  let next_btn = document.querySelector(".next-track");
+  let prev_btn = document.querySelector(".prev-track");
+
+  let seek_slider = document.querySelector(".seek_slider");
+  let curr_time = document.querySelector(".current-time");
+  let total_duration = document.querySelector(".total-duration");
+  let volume_slider = document.querySelector(".volume_slider");
+  let track_index = 0;
+  let isPlaying = false;
+  let updateTimer;
+
+  // create new audio element
+  let curr_track = document.getElementById("music");
+
+  //
+  // DEFINE YOUR SONGS HERE!!!!!
+  // MORE THAN FOUR SONGS CAN BE ADDED!!
+  // JUST ADD ANOTHER BRACKET WITH NAME AND PATH
+  // CATBOX.MOE IS RECOMMENDED FOR UPLOADING MP3 FILES
+  let track_list = [
+    {
+      name: "ippo.tsk - oyasumination (instrumental).mp3",
+      path: "https://files.catbox.moe/gm7yac.mp3"
+    },
+
+    {
+      name: "Tanukichan - Don't Give Up.mp3",
+      path: "https://files.catbox.moe/shp60s.mp3"
+    },
+
+    {
+      name: "Windows96 - Nome da Musica.mp3",
+      path: "https://files.catbox.moe/4g4kny.mp3"
+    },
+    {
+      name: "Sonic Coaster Pop - My Star.mp3",
+      path: "https://files.catbox.moe/945xon.mp3",
+    }
+
+  ];
+  //
+  //
+  //
+  //
+  // the default volume of the song feel free to change
+  vid = document.getElementById("music");
+  vid.volume = 0.1;
+
+  function setVolume() {
+    // Set the volume according to the
+    // percentage of the volume slider set
+
+    curr_track.volume = volume_slider.value / 100;
+  }
+
+
+  function loadTrack(track_index) {
+    clearInterval(updateTimer);
+    resetValues();
+
+    // load a new track
+    curr_track.src = track_list[track_index].path;
+    curr_track.load();
+
+    // update details of the track
+    track_name.textContent = "playing " + (track_index + 1) + " of " + track_list.length + ": " + track_list[track_index].name;
+
+    // set an interval of 1000 milliseconds for updating the seek slider
+    updateTimer = setInterval(seekUpdate, 1000);
+
+    // move to the next track if the current one finishes playing
+    curr_track.addEventListener("ended", nextTrack);
+  }
+
+  // reset values
+  function resetValues() {
+    curr_time.textContent = "0:00";
+    total_duration.textContent = "0:00";
+    seek_slider.value = 0;
+  }
+
+  // checks if song is playing
+  function playpauseTrack() {
+    if (!isPlaying) playTrack();
+    else pauseTrack();
+  }
+
+  // plays track when play button is pressed
+  function playTrack() {
+    curr_track.play();
+    isPlaying = true;
+
+    // replace icon with the pause icon
+    playpause_btn.innerHTML = '<i class="fas fa-pause">❚❚</i>';
+  }
+
+  // pauses track when pause button is pressed
+  function pauseTrack() {
+    curr_track.pause();
+    isPlaying = false;
+
+    // replace icon with the play icon
+    playpause_btn.innerHTML = '<i class="fas fa-play">▶</i>';
+  }
+
+  // moves to the next track
+  function nextTrack() {
+    if (track_index < track_list.length - 1)
+      track_index += 1;
+    else track_index = 0;
+    loadTrack(track_index);
+    playTrack();
+  }
+
+  // moves to the previous track
+  function prevTrack() {
+    if (track_index > 0)
+      track_index -= 1;
+    else track_index = track_list.length;
+    loadTrack(track_index);
+    playTrack();
+  }
+
+  // seeker slider
+  function seekTo() {
+    seekto = curr_track.duration * (seek_slider.value / 100);
+    curr_track.currentTime = seekto;
+  }
+
+  function seekUpdate() {
+    let seekPosition = 0;
+
+    // check if the current track duration is a legible number
+    if (!isNaN(curr_track.duration)) {
+      seekPosition = curr_track.currentTime * (100 / curr_track.duration);
+      seek_slider.value = seekPosition;
+
+      // calculate the time left and the total duration
+      let currentMinutes = Math.floor(curr_track.currentTime / 60);
+      let currentSeconds = Math.floor(curr_track.currentTime - currentMinutes * 60);
+      let durationMinutes = Math.floor(curr_track.duration / 60);
+      let durationSeconds = Math.floor(curr_track.duration - durationMinutes * 60);
+
+      // adding a zero to the single digit time values
+      if (currentSeconds < 10) { currentSeconds = "0" + currentSeconds; }
+      if (durationSeconds < 10) { durationSeconds = "0" + durationSeconds; }
+      if (currentMinutes < 10) { currentMinutes = currentMinutes; }
+      if (durationMinutes < 10) { durationMinutes = durationMinutes; }
+
+      curr_time.textContent = currentMinutes + ":" + currentSeconds;
+      total_duration.textContent = durationMinutes + ":" + durationSeconds;
+    }
+  }
+
+  // load the first track in the tracklist
+  loadTrack(track_index);
+</script>
