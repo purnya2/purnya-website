@@ -54,10 +54,8 @@
     <div style="position:absolute;top:-999px;left:-999px">
 
     </div>
-    <audio id="random-sfx"></audio>
+    <audio id="sfx-player"></audio>
 
-    <!--img src="assets/images/ps.png" alt="Sticker" class="pssticker"
-        onclick="playAudio('www.myinstants.com/media/sounds/ps2_start_up.mp3',2);"-->
 
     <div class="wrapper">
 
@@ -88,7 +86,11 @@
             </div>
 
 
+
             <div id="area-content-above" class="rot" style="background-color: rgba(0, 0, 0, 0.125);">
+                <div id="area-stickers" style="position:absolute; width:100%;height:100%;z-index:-1;">
+                    <!-- here the stickers will be injected -->
+                </div>
                 <div class="show " id="area-content">
                     <!-- here the content will be injected -->
 
@@ -105,188 +107,82 @@
     </div>
 
     <!-- Link to JavaScript files -->
-
-
-
     <script src="./js/main.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/rot.js"></script>
+
+    <script type="module">
+        import { areaInitializers } from './js/areas.js';
+
+        window.areaInitializers = areaInitializers;
+    </script>
 
 
     <script>
         // Preloading logic
 
         const areasDict = new Map();
-
-        // this doesn't really work...
-        const imagesToPreload = [
-            '/assets/images/backgrounds/anything_else.jpg',
-            '/assets/images/backgrounds/blog.jpg',
-            '/assets/images/backgrounds/drawings.jpg',
-            '/assets/images/backgrounds/index.jpg',
-            '/assets/images/backgrounds/who_are_you.jpg',
-            '/assets/images/blogging_banner.png',
-            'https://art.ngfiles.com/images/2579000/2579245_purna232_ouuhhh.jpg',
-            '/assets/images/wip.png',
-            '/assets/images/fishingonbusbanner.png'
-
-        ];
-
-        function preloadImages(imageArray) {
-            imageArray.forEach(image => {
-                const link = document.createElement('link');
-                link.rel = 'preload';
-                link.href = image;
-                link.as = 'image';  // Specify the type of asset
-                document.head.appendChild(link); // Add the link tag to the head
-            });
-        }
-
-        // Call the function to preload the images
-        preloadImages(imagesToPreload);
+        const stickersDict = new Map();
 
 
+
+        // TODO : this sould be calculated from the filesystem
         const areasToPreload = [
             'anything_else',
             'blog',
             'drawings',
             'index',
             'projects',
-            'who_are_you'
+            'who_are_you',
+            'balenciaga'
         ];
 
         function preloadAreas(areasArray) {
             areasArray.forEach(area => {
-
+                // Validate area name to prevent path traversal
+                if (!/^[a-zA-Z0-9_-]+$/.test(area)) {
+                    console.warn('Invalid area name:', area);
+                    return;
+                }
                 let area_text = fetch('/areas/' + area + '.html').then(elem => {
                     if (!elem.ok) {
-                        console.log("not valid");
+                        console.warn('Area not found:', area);
                         return;
                     }
                     return elem.text();
-                })
+                }).catch(err => {
+                    console.warn('Failed to load area:', area);
+                    return null;
+                });
+
+                let sticker_text = fetch('/assets/stickers/' + area + '_stickers.html').then(elem => {
+                    if (!elem.ok) {
+                        console.warn('Stickers not found for area:', area);
+                        return;
+                    }
+                    return elem.text();
+                }).catch(err => {
+                    console.warn('Failed to load stickers for area:', area);
+                    return null;
+                });
 
                 areasDict.set(area, area_text);
+                stickersDict.set(area, sticker_text);
             });
         }
 
         preloadAreas(areasToPreload);
 
     </script>
-
     <script>
 
-        const elementDict = new Map();
 
-        function getOrInitializeElementData(element) {
-            if (!elementDict.has(element)) {
-                // If the element is not already in the dictionary, initialize it
-                elementDict.set(element, [0, 0, 0]);
-            }
-            return elementDict.get(element); // Return the data (array)
-        }
-
-        let mouseX = window.innerWidth / 2; // Default mouse X (center of the window)
-        let mouseY = window.innerHeight / 2; // Default mouse Y (center of the window)
-
-        document.addEventListener('mousemove', (event) => {
-            mouseX = event.pageX;
-            mouseY = event.pageY;
-        });
-
-        let lastFrameTime = 0;
-        const frameInterval = 1000 / 60; // 30 FPS
-
-
-        function updateElements() {
-            if ((Math.abs(window.galleryscaleTarget - window.galleryscale)) > 0.005) {
-                window.galleryscale = lerp(window.galleryscale, window.galleryscaleTarget, 0.1);
-                const galleryContent = document.querySelector('.gallery-content');
-                galleryContent.style.transform = 'scale(' + window.galleryscale + ')';
-            }
-
-            const currentTime = performance.now();
-            if (currentTime - lastFrameTime >= frameInterval) {
-                lastFrameTime = currentTime;
-
-                const elements = document.querySelectorAll('.rot');
-
-                elements.forEach((element, index) => {
-
-                    const data = getOrInitializeElementData(element);
-
-                    let currentXRot = data[0];
-                    let currentYRot = data[1];
-                    let currentDist = data[2];
-
-                    const rect = element.getBoundingClientRect();
-
-                    const top = rect.top + window.scrollY;
-                    const left = rect.left + window.scrollX;
-                    const right = rect.right + window.scrollX;
-                    const bottom = rect.bottom + window.scrollY;
-
-                    const area = (bottom - top) * (right - left) / 100000;
-
-                    const isMouseInside =
-                        mouseX >= rect.left &&
-                        mouseX <= rect.right &&
-                        mouseY >= rect.top &&
-                        mouseY <= rect.bottom;
-
-                    if (!isMouseInside) {
-
-                        const centerX = (right - left) / 2 + left;
-                        const centerY = (bottom - top) / 2 + top;
-
-                        let lim = 1.5;
-                        let xrot = clamp((mouseX - centerX) / mouseX, -lim, lim);
-                        let yrot = clamp(-(mouseY - centerY) / mouseY, -lim, lim);
-
-                        let dist = Math.sqrt(xrot ** 2 + yrot ** 2);
-
-                        let dampener = 1.6;
-
-                        currentXRot = lerp(currentXRot, xrot, 0.1) / dampener;
-                        currentYRot = lerp(currentYRot, yrot, 0.1) / dampener;
-                        currentDist = lerp(currentDist, dist, 0.1) / dampener;
-
-
-                        element.style.transform = 'rotate3d(' + currentYRot + ', ' + currentXRot + ', 0, ' + currentDist + 'rad)';
-                        element.style.transform += 'translate(' + currentXRot * 20 + 'px,' + currentYRot * -20 + 'px)';
-                    } else {
-                        currentXRot = lerp(currentXRot, 0, 0.1);
-                        currentYRot = lerp(currentYRot, 0, 0.1);
-                        currentDist = lerp(currentDist, 0, 0.1);
-
-                        element.style.transform = 'rotate3d(' + currentYRot + ', ' + currentXRot + ', 0, ' + currentDist + 'rad)';
-                        element.style.transform += 'translate(' + currentXRot * 20 + 'px,' + currentYRot * -20 + 'px)';
-
-
-                    }
-
-                    data[0] = currentXRot;
-                    data[1] = currentYRot;
-                    data[2] = currentDist;
-                });
-
-
-            }
-            requestAnimationFrame(updateElements);
-
-        };
-        function clamp(value, min, max) {
-            return Math.min(Math.max(value, min), max);
-        }
-
-        function lerp(start, end, t) {
-            return start + (end - start) * t;
-        }
-        let already_toggled = false;
         function toggleFullHeight() {
             document.getElementById("content_id").classList.toggle("fullheight");
             document.getElementById("area-content-above").classList.toggle("rot");
             document.getElementById("navbar").classList.toggle("fullheight-navbar");
-            if (!already_toggled) {
-                already_toggled = true;
+            if (!window.fullHeight) {
+                window.fullHeight = true;
                 anime({
                     targets: '#area-content',
                     translateY: [50, 0],
@@ -294,7 +190,7 @@
                     easing: 'easeOutCirc',
                 });
             } else {
-                already_toggled = false;
+                window.fullHeight = false;
                 anime({
                     targets: '#area-content',
                     translateY: [-10, 0],
@@ -306,7 +202,6 @@
         }
 
         function closeGallery() {
-
             anime({
                 targets: '#gallery',
                 maxHeight: ["80%", "0%"],
@@ -319,12 +214,8 @@
                     closegallery.style.display = 'none';
                 }
             })
-
-
-
         }
 
-        updateElements();
         function animateBanner() {
             anime({
                 targets: '#banner',
@@ -353,7 +244,7 @@
         }
 
         function playAudio(str, offset = 0) {
-            var audio = document.getElementById("random-sfx");
+            var audio = document.getElementById("sfx-player");
             audio.src = 'https://' + str;
             console.log(audio.src)
             audio.currentTime = offset;
@@ -434,6 +325,33 @@
         function delay(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
+
+
+
+    </script>
+
+    <script>
+
+
+
+        function changeBackground(str) {
+            let bgelem = document.getElementById("background");
+            let url = '/assets/images/backgrounds/' + str + '.jpg';
+            checkFileExists(url).then((exists) => {
+                if (exists) {
+                    bgelem.style = "background-image: url(" + url + ")"
+
+                } else {
+                    bgelem.style = "background-image: url(/assets/images/backgrounds/index.jpg)"
+
+                }
+            })
+
+
+        }
+
+
+
         async function insertBlogs() {
             const data = await fetchJSON('/assets/docs/blogs.json');
             const blogs = data.blogs;
@@ -454,43 +372,6 @@
             }
         }
 
-
-
-    </script>
-
-    <script>
-
-        function checkFileExists(url) {
-            return fetch(url, { method: "HEAD" }) // Use HEAD to avoid downloading the file
-                .then((response) => {
-                    return response.ok; // Returns true if the file exists
-                })
-                .catch(() => {
-                    return false; // Returns false if there's an error (e.g., network issue or 404)
-                });
-        }
-
-        function changeBackground(str) {
-            let bgelem = document.getElementById("background");
-
-            let url = '/assets/images/backgrounds/' + str + '.jpg';
-
-            checkFileExists(url).then((exists) => {
-                if (exists) {
-                    bgelem.style = "background-image: url(" + url + ")"
-
-                } else {
-                    bgelem.style = "background-image: url(/assets/images/backgrounds/index.jpg)"
-
-                }
-            })
-
-
-        }
-
-
-    </script>
-    <script>
         function reloadAreaContent() {
 
             const urlParams = new URLSearchParams(window.location.search);
@@ -500,36 +381,56 @@
                 myParam = "index"
             }
 
+            const stickerPromise = stickersDict.get(myParam);
+            const areaPromise = areasDict.get(myParam);
 
 
-            areasDict.get(myParam).then(content => {
+
+            stickerPromise.then(content => {
                 if (content) {
-                    const targetDiv = document.getElementById("area-content");
+                    const targetDiv = document.getElementById("area-stickers");
 
-                    // Insert the content into the div
-                    targetDiv.innerHTML = content;
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = content;
 
-                    // Re-execute script tags
-                    const scripts = targetDiv.querySelectorAll('script');
-                    console.log(scripts)
-                    scripts.forEach((script) => {
-                        const newScript = document.createElement('script');
-                        if (script.src) {
-                            // If the script has a src attribute, copy it
-                            newScript.src = script.src;
-                        } else {
-                            // Otherwise, copy the inline script content
-                            newScript.textContent = script.textContent;
-                        }
-                        document.body.appendChild(newScript); // Append the new script to the body
-                        script.remove(); // Remove the old script
-                    });
+                    const scripts = tempDiv.querySelectorAll('script');
+                    scripts.forEach(script => script.remove());
+
+                    console.log("loading stickers for area: " + myParam);
+                    targetDiv.innerHTML = '';
+                    targetDiv.innerHTML = tempDiv.innerHTML;
+                } else {
+                    const targetDiv = document.getElementById("area-stickers");
+                    targetDiv.innerHTML = '';
                 }
             }).then(() => {
-                if (myParam == 'blog') {
-                    insertBlogs();
-                }
-                animateBanner();
+                areaPromise.then(content => {
+                    if (content) {
+                        const targetDiv = document.getElementById("area-content");
+
+                        // Create a temporary container to parse the content safely
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = content;
+
+                        // Remove all script tags to prevent XSS attacks
+                        const scripts = tempDiv.querySelectorAll('script');
+                        scripts.forEach(script => script.remove());
+
+                        // Now safely inject the sanitized content
+                        targetDiv.innerHTML = tempDiv.innerHTML;
+                    }
+                }).then(() => {
+                    // Initialize area-specific functionality using the new module system
+                    if (window.areaInitializers && window.areaInitializers[myParam]) {
+                        window.areaInitializers[myParam]();
+                    }
+
+                    // Keep existing blog logic for now
+                    if (myParam == 'blog') {
+                        insertBlogs();
+                    }
+                    animateBanner();
+                });
             });
             changeBackground(myParam)
         }

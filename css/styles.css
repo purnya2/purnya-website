@@ -78,16 +78,7 @@ body {
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-.pssticker {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 10;
-    width: 90px;
-    border: solid;
-    border-color: white;
-    cursor: pointer;
-}
+
 
 .navbar {
     width: 200px;
@@ -122,10 +113,7 @@ ul {
     padding-right: 0px;
 }
 
-.navbar ul li::before {
-    content: "/";
-    color: #ffffff;
-}
+
 
 li::before {
     content: "-";
@@ -144,9 +132,14 @@ ul li a {
     cursor: pointer;
 }
 
+.navbar ul li::before {
+    content: "/";
+    color: #ffffff;
+}
+
 .navbar ul li a {
     text-decoration: none;
-    color: #ffffff !important;
+    color: #ffffff;
     cursor: pointer;
 }
 

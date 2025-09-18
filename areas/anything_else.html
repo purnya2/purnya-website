@@ -1,20 +1,39 @@
-
-
-                <div id="banner" style="background-image: url('/assets/images/wip.png');
+<div id="banner-anything-else" style="background-image: url('/assets/images/wow.jpg');
                             background-position: center; 
                             background-attachment: local;
-                            background-repeat: no-repeat; 
                             background-size:cover;
                             height:200px;
                             width: 100%;
-                            position:relative;
+                            bottom:0;
+                            position:fixed;
                             padding:0;
+                            overflow:hidden;
                             ">
-                            
-                    <h2 class="text_with_border" style="color:rgb(255, 255, 255); font-size:40px; position:absolute; bottom:-10px; left:0; margin:0;"> work in progress...</h2>
-                </div>
-                
-                <div style="padding:100px">Still a work in progress! Beautiful artwork of tails made by Yui Karasuno for the Sonic Channel</div>
 
-            </div>
 
+</div>
+<audio id="thinking-music" loop>
+    <source src="/assets/audio/flashback.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<div style="position:absolute; right:0px; margin:10px;">
+    <input type="range" id="volume-slider">
+</div>
+<div id="song-info" style="margin-top:150px;width:75%; margin-left:10px;">
+    <h2>moff (もっふーP) - flashback,0217 (feat. Hatsune Miku)</h2>
+    <h4>Album : High Collar Record (ハイカラレコード) (2012)</h4>
+</div>
+</div>
+
+<style>
+    .navbar ul li::before {
+        content: "/";
+        color: #ffffff;
+    }
+
+    .navbar ul li a {
+        text-decoration: none;
+        color: #cfcfcf;
+        cursor: pointer;
+    }
+</style>
