@@ -573,27 +573,37 @@ ul li a {
 
 }
 
+.outsidesticker {
+    position: absolute;
+
+}
+
 @media (max-width: 850px) {
 
     body {
-    background-color: #f0f8ff;
-    background-image: url('../assets/images/backgrounds/index.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+        background-color: #f0f8ff;
+        background-image: url('../assets/images/backgrounds/index.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
 
-    font-family: 'Iosevka', sans-serif;
-    font-weight: regular;
-    font-size: larger;
+        font-family: 'Iosevka', sans-serif;
+        font-weight: regular;
+        font-size: larger;
 
-    overflow-y: scroll;
-    overflow-x: hidden;
+        overflow-y: scroll;
+        overflow-x: hidden;
 
-    min-height: 100%;
-    scrollbar-color: black white;
-    scrollbar-width: auto;
+        min-height: 100%;
+        scrollbar-color: black white;
+        scrollbar-width: auto;
 
-}
+    }
+
+    .outsidesticker {
+        display: none;
+    }
+
     .fixed-corner-button {
         display: none;
     }
