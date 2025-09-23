@@ -1,0 +1,56 @@
+<div id="fish" class="boop outsidesticker randomstick"><img src="/assets/images/fiiidddsss.gif"></div>
+<img src="assets/images/ps.png" alt="Sticker" class="pssticker boop"
+    onclick="playAudio('https://' +'www.myinstants.com/media/sounds/ps2_start_up.mp3','goofy-sfx',1);">
+
+<img id="toro" src="assets/images/toro-inue-silly-car.gif" alt="Sticker" class="randomstick"
+    onclick="playAudio('https://' +'www.myinstants.com/media/sounds/cat-hello.mp3','goofy-sfx',1);">
+
+
+<style>
+    .randomstick {
+        position: absolute;
+        top: -44px;
+        left: 0px;
+        z-index: -1;
+        overflow: visible;
+        cursor: pointer;
+    }
+
+
+
+    .randomstick img {
+        width: 50px;
+        height: auto;
+    }
+
+    #toro {
+        bottom: -30px;
+        left: -25px;
+        top: auto;
+        width: 40px;
+        z-index: 1;
+
+    }
+
+    .fullscreen {
+        #toro {
+            bottom: 0px;
+            left: -25px;
+            top: auto;
+            width: 50px;
+            z-index: 1;
+
+        }
+    }
+
+    .pssticker {
+        position: absolute;
+        top: -140px;
+        right: 0px;
+        z-index: -1;
+        width: 90px;
+        border: solid;
+        border-color: white;
+        cursor: pointer;
+    }
+</style>

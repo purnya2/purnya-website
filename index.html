@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My site!">
+    <title>Purnya's Dump</title>
+
+    <!-- Link to favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/images/icons/favicon.ico">
+
+    <!-- Link to CSS stylesheets -->
+    <link rel="stylesheet" href="./css/styles.css"> <!-- Main stylesheet -->
+    <link rel="stylesheet" href="./css/fonts.css"> <!-- Fonts, duh -->
+    <script src="./js/anime.min.js"></script>
+
+
+</head>
+
+<body id="background" style="background-image: url('/assets/images/backgrounds/index.jpg')">
+    <button onclick="closeGallery()" id="closegallery"
+        style="display: none;position: absolute; top: 5%; left: 5%; z-index: 20; background: white; border: 1px solid black; width: 30px; height: 30px; cursor: pointer;">
+        x
+    </button>
+    <div id="gallery" class="gallery-overlay" style="display:none">
+        <div class="gallery-content">
+
+            <div id="gallery-images">
+                <div class="gallery-image-container"
+                    style="position:absolute; top: 100px; left: 100px; transform: rotate(4deg);transition: transform 0.1s ease;">
+
+                    <h3>Nep playin</h3>
+                    <img class="gallery-image"
+                        src="https://art.ngfiles.com/images/6907000/6907395_2262846_purnya_untitled-6907395.f7d8d28e7340f6a9e6a1b8871c7ec699.jpg?f1753863093"
+                        style="width:200px;height:auto;">
+
+                </div>
+
+                <div class="gallery-image-container"
+                    style="position:absolute; top: 400px; left: 400px; transform: rotate(-4deg);">
+
+                    <h3>silly</h3>
+                    <img class="gallery-image"
+                        src="https://art.ngfiles.com/images/5137000/5137097_106240_purnya_nnep-d.fec0071f39902d9a0f29f0f6b894aa01.webp?f1697621942"
+                        style="width:300px;height:auto;">
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div style="position:absolute;top:-999px;left:-999px">
+
+    </div>
+    <audio id="goofy-sfx"></audio>
+    <audio id="ui-sfx"></audio>
+
+
+    <div class="wrapper">
+
+
+
+        <!--img src="assets/images/purnya.gif" alt="Sticker" class="sticker" id="purnya"
+            onclick="playAudio('www.myinstants.com/media/sounds/burpss.mp3');"-->
+
+        <div id="navbar-burger">
+            <p id="burger-title">>MENU</p>
+            <ul id="navbar-container-burger">
+
+            </ul>
+
+        </div>
+
+        <div class="content" id="content_id">
+
+            <div style="position:relative;">
+                <div id="volumetogglebutton" class="mutebutton rot boop" onclick="toggleUiSound()">
+                    <div id="volumeup">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M2 16.0001H5.88889L11.1834 20.3319C11.2727 20.405 11.3846 20.4449 11.5 20.4449C11.7761 20.4449 12 20.2211 12 19.9449V4.05519C12 3.93977 11.9601 3.8279 11.887 3.73857C11.7121 3.52485 11.3971 3.49335 11.1834 3.66821L5.88889 8.00007H2C1.44772 8.00007 1 8.44778 1 9.00007V15.0001C1 15.5524 1.44772 16.0001 2 16.0001ZM23 12C23 15.292 21.5539 18.2463 19.2622 20.2622L17.8445 18.8444C19.7758 17.1937 21 14.7398 21 12C21 9.26016 19.7758 6.80629 17.8445 5.15557L19.2622 3.73779C21.5539 5.75368 23 8.70795 23 12ZM18 12C18 10.0883 17.106 8.38548 15.7133 7.28673L14.2842 8.71584C15.3213 9.43855 16 10.64 16 12C16 13.36 15.3213 14.5614 14.2842 15.2841L15.7133 16.7132C17.106 15.6145 18 13.9116 18 12Z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div id="volumemute" style="display:none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M5.88889 16.0001H2C1.44772 16.0001 1 15.5524 1 15.0001V9.00007C1 8.44778 1.44772 8.00007 2 8.00007H5.88889L11.1834 3.66821C11.3971 3.49335 11.7121 3.52485 11.887 3.73857C11.9601 3.8279 12 3.93977 12 4.05519V19.9449C12 20.2211 11.7761 20.4449 11.5 20.4449C11.3846 20.4449 11.2727 20.405 11.1834 20.3319L5.88889 16.0001ZM20.4142 12.0001L23.9497 15.5356L22.5355 16.9498L19 13.4143L15.4645 16.9498L14.0503 15.5356L17.5858 12.0001L14.0503 8.46454L15.4645 7.05032L19 10.5859L22.5355 7.05032L23.9497 8.46454L20.4142 12.0001Z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div id="animationtogglebutton" class="toggleanimation rot boop" onclick="toggleAnimation()">
+
+                    <div id="animationunlocked">
+                        <?xml version="1.0" encoding="UTF-8"?>
+                        <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="m 6.976562 -0.0195312 c -0.800781 0.0078124 -1.59375 0.3125002 -2.203124 0.9101562 l -2.773438 2.707031 v -0.597656 c 0 -0.550781 -0.449219 -1 -1 -1 s -1 0.449219 -1 1 v 3 c 0 0.550781 0.449219 1 1 1 h 3 c 0.550781 0 1 -0.449219 1 -1 s -0.449219 -1 -1 -1 h -0.574219 l 2.753907 -2.707031 c 0.367187 -0.359375 1.246093 -0.367188 1.601562 -0.019531 l 5.519531 5.4375 c 0.390625 0.390624 1.023438 0.382812 1.410157 -0.011719 c 0.390624 -0.390625 0.382812 -1.023438 -0.007813 -1.410157 l -5.519531 -5.417968 c -0.613282 -0.601563 -1.410156 -0.8906252 -2.207032 -0.8906252 z m -4.828124 8.0312502 c -0.316407 -0.046875 -0.636719 0.058593 -0.859376 0.289062 c -0.386718 0.390625 -0.386718 1.023438 0.007813 1.410157 l 5.484375 5.378906 c 0.617188 0.609375 1.4375 0.875 2.242188 0.882812 c 0.804687 0.007813 1.636718 -0.246094 2.265624 -0.871094 l 2.710938 -2.6875 v 0.585938 c 0 0.550781 0.449219 1 1 1 s 1 -0.449219 1 -1 v -3 c 0 -0.550781 -0.449219 -1 -1 -1 h -3 c -0.550781 0 -1 0.449219 -1 1 s 0.449219 1 1 1 h 0.585938 l -2.710938 2.710938 c -0.15625 0.15625 -0.476562 0.285156 -0.832031 0.28125 c -0.355469 0 -0.691407 -0.140626 -0.863281 -0.304688 l -5.480469 -5.398438 c -0.148438 -0.148437 -0.339844 -0.246093 -0.550781 -0.277343 z m 0 0"
+                                fill="currentColor" />
+                        </svg>
+                    </div>
+                    <div id="animationlocked" style="display:none;">
+                        <svg viewBox="-0.01 0 16.019531 16.019531" xmlns="http://www.w3.org/2000/svg">
+                            <g fill="#2e3436">
+                                <path
+                                    d="m 6.976562 0 c -0.800781 0.0078125 -1.59375 0.3125 -2.203124 0.910156 l -2.773438 2.707032 v -0.597657 c 0 -0.550781 -0.449219 -1 -1 -1 s -1 0.449219 -1 1 v 3 c 0 0.550781 0.449219 1 1 1 h 3 c 0.550781 0 1 -0.449219 1 -1 s -0.449219 -1 -1 -1 h -0.574219 l 2.753907 -2.707031 c 0.367187 -0.359375 1.246093 -0.367188 1.601562 -0.019531 l 5.519531 5.4375 c 0.390625 0.390625 1.023438 0.382812 1.410157 -0.011719 c 0.390624 -0.390625 0.382812 -1.023438 -0.007813 -1.410156 l -5.519531 -5.417969 c -0.613282 -0.601563 -1.410156 -0.890625 -2.207032 -0.890625 z m -4.945312 8.019531 c -0.277344 -0.007812 -0.546875 0.097657 -0.742188 0.300781 c -0.386718 0.390626 -0.386718 1.023438 0.007813 1.410157 l 5.484375 5.378906 c 0.613281 0.605469 1.421875 0.867187 2.21875 0.878906 v -1.976562 c -0.339844 -0.011719 -0.65625 -0.148438 -0.816406 -0.304688 l -5.480469 -5.398437 c -0.152344 -0.148438 -0.34375 -0.246094 -0.550781 -0.277344 c -0.042969 -0.007812 -0.082032 -0.007812 -0.121094 -0.011719 z m 0 0"
+                                    fill-opacity="0.34902" />
+                                <path
+                                    d="m 13 9.019531 c -1.097656 0 -2 0.902344 -2 2 v 1 h -1 v 4 h 6 v -4 h -1 v -1 c 0 -1.097656 -0.902344 -2 -2 -2 z m 0 1 c 0.5625 0 1 0.4375 1 1 v 1 h -2 v -1 c 0 -0.5625 0.4375 -1 1 -1 z m 0 0" />
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div id="navbar" class="navbar rot">
+
+
+                    <ul id="navbar-container">
+                        <!-- Navbar links will be injected here -->
+                    </ul>
+                    <div class="glass-specular"></div>
+
+                </div>
+
+
+                <div id="area-components" style="position:absolute; width:100%;height:100%; " class="">
+                    <!-- here the components will be injected -->
+                </div>
+
+            </div>
+
+
+
+
+            <div id="area-content-above" class="rot" style="background-color: rgba(0, 0, 0, 0.125);">
+
+                <div class="show " id="area-content" style="position:absolute;z-index:1;">
+                    <!-- here the content will be injected -->
+
+                </div>
+                <div id="area-stickers" style="position:absolute; width:100%;height:100%;" class="">
+                    <!-- here the stickers will be injected -->
+                </div>
+
+                <button class="fixed-corner-button boop" onclick="toggleFullHeight()">
+                    ↗
+                </button>
+                <div class='title' onclick='titleAnim()'>purnya's dump</div>
+            </div>
+
+            <audio id="funny-sfx" src="https://files.catbox.moe/eme5ps.mp3"></audio>
+        </div>
+
+    </div>
+
+    <!-- Link to JavaScript files -->
+    <script src="./js/main.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/rot.js"></script>
+
+    <script type="module">
+        import { areaInitializers } from './js/areas.js';
+
+        window.areaInitializers = areaInitializers;
+    </script>
+
+
+    <script>
+        // Preloading logic
+
+        const areasDict = new Map();
+        const stickersDict = new Map();
+        const componentsDict = new Map();
+
+
+        // TODO : this sould be calculated from the filesystem
+        const areasToPreload = [
+            'anything_else',
+            'blog',
+            'drawings',
+            'index',
+            'projects',
+            'who_are_you',
+            'balenciaga'
+        ];
+
+        function preloadAreas(areasArray) {
+            areasArray.forEach(area => {
+                // Validate area name to prevent path traversal
+                if (!/^[a-zA-Z0-9_-]+$/.test(area)) {
+                    console.warn('Invalid area name:', area);
+                    return;
+                }
+                let area_text = fetch('/areas/' + area + '.html').then(elem => {
+                    if (!elem.ok) {
+                        console.warn('Area not found:', area);
+                        return;
+                    }
+                    return elem.text();
+                }).catch(err => {
+                    console.warn('Failed to load area:', area);
+                    return null;
+                });
+
+                let sticker_text = fetch('/assets/stickers/' + area + '_stickers.html').then(elem => {
+                    if (!elem.ok) {
+                        console.warn('Stickers not found for area:', area);
+                        return;
+                    }
+                    return elem.text();
+                }).catch(err => {
+                    console.warn('Failed to load stickers for area:', area);
+                    return null;
+                });
+
+                let component_text = fetch('/components/' + area + '_components.html').then(elem => {
+                    if (!elem.ok) {
+                        console.warn('Components not found for area:', area);
+                        return;
+                    }
+                    return elem.text();
+                }).catch(err => {
+                    console.warn('Failed to load components for area:', area);
+                    return null;
+                });
+
+
+                areasDict.set(area, area_text);
+                stickersDict.set(area, sticker_text);
+                componentsDict.set(area, component_text);
+            });
+        }
+
+        preloadAreas(areasToPreload);
+
+    </script>
+    <script>
+
+
+        function toggleFullHeight() {
+            document.getElementById("content_id").classList.toggle("fullheight");
+            document.getElementById("area-content-above").classList.toggle("rot");
+            document.getElementById("volumetogglebutton").classList.toggle("fullheight-navbar");
+            document.getElementById("area-stickers").classList.toggle("fullscreen");
+            document.getElementById("area-components").classList.toggle("fullscreen");
+
+            document.getElementById("navbar").classList.toggle("fullheight-navbar");
+            if (!window.fullHeight) {
+                playAudio("/assets/audio/sfx/fullscreen.wav");
+                window.fullHeight = true;
+                anime({
+                    targets: '#area-content',
+                    translateY: [50, 0],
+                    duration: 250,
+                    easing: 'easeOutCirc',
+                });
+            } else {
+                playAudio("/assets/audio/sfx/unfullscreen.wav");
+
+                window.fullHeight = false;
+                anime({
+                    targets: '#area-content',
+                    translateY: [-10, 0],
+                    duration: 250,
+                    easing: 'spring(0.5, 500, 150, 50)'
+                });
+            }
+
+        }
+
+        function closeGallery() {
+            playAudio("/assets/audio/sfx/closegallery.wav");
+
+            anime({
+                targets: '#gallery',
+                maxHeight: ["80%", "0%"],
+                duration: 150,
+                easing: 'easeOutCirc',
+                complete: function (anim) {
+                    const gallery = document.getElementById('gallery');
+                    gallery.style.display = 'none';
+                    const closegallery = document.getElementById('closegallery');
+                    closegallery.style.display = 'none';
+                }
+            })
+        }
+
+        function animateBanner() {
+            anime({
+                targets: '#banner',
+                translateY: [-50, 0],
+                duration: 250,
+                easing: 'easeOutCirc',
+            });
+        }
+
+        function titleAnim() {
+            var audio = document.getElementById("funny-sfx");
+            audio.currentTime = 0;
+            audio.play().then(() => {
+                anime({
+                    targets: '.title',
+                    keyframes: [
+                        { translateX: 50 },
+                        { translateX: 0 },
+                    ],
+
+                    duration: 550,
+
+                });
+            })
+
+        }
+
+        function playAudio(str, classname = "ui-sfx", volume = 0.5) {
+            const audio = new Audio(str);
+            audio.volume = volume;
+            console.log(audio.src)
+            if (!window.enableSounds && classname == "ui-sfx") {
+                return;
+            }
+            audio.play().catch(error => {
+                console.error("Audio playback failed:", error);
+            });
+        }
+
+
+
+
+    </script>
+
+    <script>
+
+        function changeArea(area_name) {
+
+            const urlParams = new URLSearchParams(window.location.search);
+            var myParam = urlParams.get('area');
+
+            if (area_name != myParam) {
+                let url = new URL(window.location);
+                url.searchParams.set('area', area_name);
+                window.history.pushState({}, '', url)
+                reloadAreaContent()
+            }
+        }
+
+        function addBlog(blog) {
+
+            const container = document.getElementById("blogs-container");
+
+            const blogPreviewContainer = document.createElement("div");
+            blogPreviewContainer.className = "blog-preview-container rot";
+
+            // Create the title container
+            const titleContainer = document.createElement("div");
+            titleContainer.id = "title";
+
+            // Create the title element
+            const titleElement = document.createElement("h4");
+            const titleLink = document.createElement("a");
+            titleLink.href = "blog/blog_area.html?id=" + blog.contentUrl + ".html"
+            titleLink.textContent = blog.title;
+            titleElement.appendChild(titleLink);
+
+            // Create the date element
+            const dateElement = document.createElement("p");
+            dateElement.id = "date";
+            dateElement.textContent = blog.date;
+
+            // Append title and date to the title container
+            titleContainer.appendChild(titleElement);
+            titleContainer.appendChild(dateElement);
+
+            // Create a horizontal rule
+            const hrElement = document.createElement("hr");
+            hrElement.className = "wave";
+
+            // Create the content paragraph
+            const contentParagraph = document.createElement("p");
+            contentParagraph.textContent = blog.description;
+
+            // Append all elements to the blog preview container
+            blogPreviewContainer.appendChild(titleContainer);
+            blogPreviewContainer.appendChild(hrElement);
+            blogPreviewContainer.appendChild(contentParagraph);
+
+            // Append the blog preview container to the main container
+            container.appendChild(blogPreviewContainer);
+
+            anime({
+                targets: blogPreviewContainer,
+                translateX: [-10, 0]
+            })
+
+        }
+
+
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+
+
+    </script>
+
+    <script>
+
+
+
+
+
+        function changeBackground(str) {
+            let bgelem = document.getElementById("background");
+            let url = '/assets/images/backgrounds/' + str + '.jpg';
+            checkFileExists(url).then((exists) => {
+                if (exists) {
+                    bgelem.style = "background-image: url(" + url + ")"
+
+                } else {
+                    bgelem.style = "background-image: url(/assets/images/backgrounds/index.jpg)"
+
+                }
+            })
+
+
+        }
+
+
+
+        async function insertBlogs() {
+            const data = await fetchJSON('/assets/docs/blogs.json');
+            const blogs = data.blogs;
+
+            const sortedBlogs = blogs.sort((a, b) => {
+                const dateA = new Date(a.date);
+                const dateB = new Date(b.date);
+
+                return dateB - dateA;
+
+            })
+
+            for (const blog of sortedBlogs) {
+
+                addBlog(blog);
+                await delay(100);
+
+            }
+        }
+
+        async function reloadAreaContent() {
+
+            const urlParams = new URLSearchParams(window.location.search);
+            var myParam = urlParams.get('area');
+
+            if (myParam == null) {
+                myParam = "index"
+            }
+
+            try {
+                // Helper function to safely inject content
+                const injectContent = (content, targetId) => {
+                    const targetDiv = document.getElementById(targetId);
+                    if (content) {
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = content;
+
+                        // Remove all script tags to prevent XSS attacks
+                        const scripts = tempDiv.querySelectorAll('script');
+                        scripts.forEach(script => script.remove());
+
+                        targetDiv.innerHTML = tempDiv.innerHTML;
+                    } else {
+                        targetDiv.innerHTML = '';
+                    }
+                };
+
+                // Load all content in parallel and wait for completion
+                const [componentContent, stickerContent, areaContent] = await Promise.all([
+                    componentsDict.get(myParam),
+                    stickersDict.get(myParam),
+                    areasDict.get(myParam)
+                ]);
+
+                // Inject content sequentially
+                injectContent(componentContent, "area-components");
+                injectContent(stickerContent, "area-stickers");
+                injectContent(areaContent, "area-content");
+
+                // Initialize area-specific functionality
+                if (window.areaInitializers && window.areaInitializers[myParam]) {
+                    window.areaInitializers[myParam]();
+                }
+
+                // Keep existing blog logic for now
+                if (myParam == 'blog') {
+                    insertBlogs();
+                }
+                animateBanner();
+            } catch (error) {
+                console.error('Failed to load area content:', error);
+            }
+            changeBackground(myParam)
+        }
+
+
+        reloadAreaContent()
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

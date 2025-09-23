@@ -1,0 +1,764 @@
+/* Background Styles */
+:root {
+    --show-nohover-opacity: 0.7;
+}
+
+body {
+    background-color: #f0f8ff;
+    background-image: url('../assets/images/backgrounds/index.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    font-family: 'Iosevka', sans-serif;
+    font-weight: regular;
+
+    overflow: hidden;
+    min-height: 100vh;
+    scrollbar-color: black white;
+    scrollbar-width: thin;
+
+}
+
+.boop:active {
+    scale: 0.9;
+}
+
+.mutebutton {
+    position: absolute;
+    left: -50px;
+    width: 25px;
+    height: 25px;
+    background-color: rgba(255, 255, 255, 0.362);
+    padding: 5px;
+    border-radius: 50px;
+    border: solid 2px rgb(255, 255, 255);
+    color: white !important;
+
+}
+
+.mutebutton:hover {
+
+    background-color: rgb(255, 255, 255);
+    color: rgb(80, 80, 92) !important;
+    cursor: pointer;
+
+}
+
+.toggleanimation {
+    position: absolute;
+    left: -50px;
+    width: 25px;
+    height: 25px;
+    top: 50px;
+    background-color: rgba(255, 255, 255, 0.362);
+    padding: 5px;
+    border-radius: 50px;
+    border: solid 2px rgb(255, 255, 255);
+    color: white !important;
+}
+
+.toggleanimation:hover {
+
+    background-color: rgb(255, 255, 255);
+    color: rgb(80, 80, 92) !important;
+    cursor: pointer;
+
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+
+}
+
+
+.content {
+    position: relative;
+    height: 70vh;
+    width: 90vw;
+    /*width: 100%;*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-left: 150px;
+    padding-right: 150px;
+
+
+}
+
+
+
+#area-content-above {
+    width: 100%;
+    max-width: 700px;
+    min-width: 500px;
+    margin-left: 50px;
+}
+
+.sticker {
+    position: relative;
+    cursor: pointer;
+
+    /* Makes it float above the content */
+    top: -40vh;
+    /* Distance from the top of the page */
+    left: 60px;
+    /* Distance from the left of the page */
+    width: 150px;
+    /* Adjust the size of the image */
+    height: auto;
+    /* Keep aspect ratio */
+    /* Ensures it's above other elements */
+}
+
+.title {
+    position: absolute;
+    top: 0px;
+    right: -30px;
+    width: 0px;
+    height: auto;
+    z-index: 10;
+    cursor: pointer;
+    color: white;
+    writing-mode: vertical-rl;
+    font-size: 20px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+
+
+.navbar {
+    width: 200px;
+    height: 200px;
+    background-color: #ffffff;
+    font-size: small;
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.500);
+
+}
+
+.show {
+    opacity: var(--show-nohover-opacity);
+    color: #141414 !important;
+    border: solid 5px rgb(255, 255, 255);
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.500);
+}
+
+.show:hover {
+    opacity: 1;
+    color: inherit !important;
+
+}
+
+ul {
+    list-style: none;
+    padding-left: 10px;
+    padding-right: 0px;
+}
+
+
+
+li::before {
+    content: "-";
+
+}
+
+
+ul li:hover {
+    font-weight: bold;
+    color: #000000;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.navbar ul li::before {
+    content: "/";
+    color: #ffffff;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #ffffff !important;
+    cursor: pointer;
+}
+
+.navbar:hover ul li a {
+    text-decoration: none;
+    color: #596e81 !important;
+    cursor: pointer;
+}
+
+#navbar-burger {
+    display: none;
+}
+
+.form {
+    width: 50%;
+    border-radius: 25px;
+    border: 1px solid #525252;
+    background-color: yellow;
+
+}
+
+.small_panel {
+    width: 50%;
+    border-radius: 4px;
+    border: 1px solid #ffffff;
+    padding: 10px;
+
+}
+
+.form p {
+    padding: 0px;
+    margin: 10px;
+}
+
+.form form {
+    border-radius: 0 0 25px 25px;
+    background-color: white;
+    border-top: 1px solid black;
+    padding: 10px;
+}
+
+#toggleContent {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    padding: 0 10px;
+
+    transition: opacity 0.2s ease, height 0.2s ease, padding 0.2s ease;
+}
+
+#toggleContent.visible {
+    opacity: 1;
+    height: auto;
+    padding: 10px;
+}
+
+.musicplayer {
+    width: 170px;
+    height: 200px;
+    background-color: #ffffff;
+    font-size: small;
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.500);
+    position: absolute;
+    bottom: 40px;
+    right: -10px
+}
+
+.albumart {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    height: 80px;
+
+}
+
+.control-menu {
+    display: flex;
+    justify-content: center;
+}
+
+.seeking {
+    display: flex;
+    justify-content: center;
+}
+
+.seek_slider {
+    display: block;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.volume_slider {
+    width: 30%;
+    margin-left: 10px;
+}
+
+.wave {
+    border: none;
+    width: auto;
+    height: 15px;
+    position: relative;
+    margin: 0 auto;
+    padding-top: 10px;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        background-image: url('/assets/svgs/wavy.svg');
+        background-size: 4%;
+        background-repeat: repeat-x;
+        width: 1300%;
+        /* THIS FUCKING SUCKS */
+
+        height: 100%;
+        position: absolute;
+        animation: wave 24s linear infinite;
+    }
+}
+
+@keyframes wave {
+    0% {
+        transform: translateX(-1050px)
+    }
+
+    100% {
+        transform: translateX(0px)
+    }
+}
+
+#area-content {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    -ms-overflow-style: thin;
+}
+
+#background {
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    background: url('your-image.jpg') no-repeat center center;
+    background-size: 150% 150%;
+    animation: moveBackground 250s linear infinite;
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 50%;
+        /* Start fully to the left */
+    }
+
+    50% {
+        background-position: 100% 50%;
+        /* Move fully to the right */
+    }
+
+    100% {
+        background-position: 0% 50%;
+        /* Move back to the left */
+    }
+}
+
+.rot {
+    background-color: rgba(255, 255, 255, 0);
+
+}
+
+
+
+.rot:hover ul li a {
+    text-decoration: none;
+    color: #596e81;
+    cursor: pointer;
+}
+
+.glass-specular {
+
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    backdrop-filter: blur(4px);
+    filter: url(#lg-dist);
+    isolation: isolate;
+
+
+}
+
+
+.rot:hover,
+.glass-specular:hover {
+    background-color: rgb(255, 255, 255);
+    filter: none;
+}
+
+.text_with_border {
+    text-shadow:
+        /* first layer at 1px */
+        -1px -1px 0px #000,
+        0px -1px 0px #000,
+        1px -1px 0px #000,
+        -1px 0px 0px #000,
+        1px 0px 0px #000,
+        -1px 1px 0px #000,
+        0px 1px 0px #000,
+        1px 1px 0px #000,
+        /* second layer at 2px */
+        -2px -2px 0px #000,
+        -1px -2px 0px #000,
+        0px -2px 0px #000,
+        1px -2px 0px #000,
+        2px -2px 0px #000,
+        2px -1px 0px #000,
+        2px 0px 0px #000,
+        2px 1px 0px #000,
+        2px 2px 0px #000,
+        1px 2px 0px #000,
+        0px 2px 0px #000,
+        -1px 2px 0px #000,
+        -2px 2px 0px #000,
+        -2px 1px 0px #000,
+        -2px 0px 0px #000,
+        -2px -1px 0px #000,
+        /* third layer at 3px */
+        -3px -3px 0px #000,
+        -2px -3px 0px #000,
+        -1px -3px 0px #000,
+        0px -3px 0px #000,
+        1px -3px 0px #000,
+        2px -3px 0px #000,
+        3px -3px 0px #000,
+        3px -2px 0px #000,
+        3px -1px 0px #000,
+        3px 0px 0px #000,
+        3px 1px 0px #000,
+        3px 2px 0px #000,
+        3px 3px 0px #000,
+        2px 3px 0px #000,
+        1px 3px 0px #000,
+        0px 3px 0px #000,
+        -1px 3px 0px #000,
+        -2px 3px 0px #000,
+        -3px 3px 0px #000,
+        -3px 2px 0px #000,
+        -3px 1px 0px #000,
+        -3px 0px 0px #000,
+        -3px -1px 0px #000,
+        -3px -2px 0px #000;
+}
+
+.fixed-corner-button {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 100;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fixed-corner-button:hover {
+    background-color: rgba(255, 255, 255, 1);
+    border-color: #999;
+}
+
+.fullheight {
+    height: 100vh;
+
+    .show {
+        opacity: 1;
+
+        background-color: white !important;
+    }
+
+    ul li a {
+        text-decoration: none;
+        color: #596e81;
+        cursor: pointer;
+    }
+}
+
+.fullheight-navbar {
+
+
+    margin-top: 70px;
+
+
+}
+
+
+.gallery-overlay {
+    position: fixed;
+    background-color: rgba(255, 251, 247);
+    overflow: scroll;
+
+    width: 99%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 6px double black;
+
+    z-index: 10;
+    cursor: crosshair
+}
+
+.gallery-content {
+
+    width: 5000px;
+    height: 5000px;
+    overflow: scroll;
+
+    background-color: rgba(255, 251, 247);
+
+    min-width: 100%;
+    min-height: 100%;
+    background-image: radial-gradient(rgb(185, 185, 185) 1.2px, transparent 0);
+    background-size: 40px 40px;
+    background-position: -19px -19px;
+
+}
+
+.gallery-image-container .gallery-image {
+    border: 1px dashed black;
+    transition: scale 0.1s ease, border 0.2s ease;
+    width: fit-content;
+    height: fit-content;
+}
+
+.gallery-image-container .gallery-image:hover {
+    border: 4px double rgb(0, 0, 0);
+    transition: border 0.2s ease;
+    background-color: white;
+
+}
+
+.gallery-image-container {
+    cursor: pointer;
+
+    opacity: 0;
+
+    transition: transform 0.1s ease, scale 0.2s ease;
+
+}
+
+.gallery-image-container h3 {
+    font-size: smaller;
+    font-style: italic;
+    opacity: 0.3;
+    margin-bottom: 0;
+    background-color: rgb(255, 218, 170);
+}
+
+.gallery-image-container:hover h3 {
+    opacity: 1;
+
+}
+
+.gallery-image-container:hover {
+    z-index: 11;
+    scale: 1.1;
+    transform: rotate(0deg) !important;
+    transition: scale 0.2s ease, transform 0.1s ease;
+
+}
+
+.gallery-selected-overlay {
+    position: absolute;
+    z-index: 14;
+
+    background-color: rgba(255, 255, 255, 0.942);
+    width: 100%;
+    height: 100%;
+
+
+}
+
+.gallery-selected-overlay:hover {
+
+    background-color: rgba(255, 255, 255, 0.832);
+    transition: background-color 0.2s ease, ;
+
+
+}
+
+.gallery-image-container-selected .gallery-image {
+    border: 2px solid black;
+    transition: scale 0.1s ease, border 0.2s ease;
+    width: fit-content;
+    height: fit-content;
+}
+
+.gallery-image-container-selected .gallery-image:hover {
+    background-color: white;
+
+}
+
+.gallery-image-container-selected {
+    z-index: 15;
+    scale: 1.1;
+    transform: rotate(0deg) !important;
+    transition: scale 0.2s ease, transform 0.1s ease;
+
+}
+
+.gallery-image-container-selected h3 {
+    font-size: smaller;
+    font-style: italic;
+    margin-bottom: 0;
+    background-color: rgb(255, 218, 170);
+    opacity: 1;
+
+}
+
+.outsidesticker {
+    position: absolute;
+
+}
+
+@media (max-width: 850px) {
+
+    body {
+        background-color: #f0f8ff;
+        background-image: url('../assets/images/backgrounds/index.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        font-family: 'Iosevka', sans-serif;
+        font-weight: regular;
+        font-size: larger;
+
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+        min-height: 100%;
+        scrollbar-color: black white;
+        scrollbar-width: auto;
+
+    }
+
+    .outsidesticker {
+        display: none;
+    }
+
+    .fixed-corner-button {
+        display: none;
+    }
+
+    .wrapper {
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+        border: solid 4px rgb(255, 255, 255);
+
+    }
+
+    #background {
+        background-image: none !important;
+        background-color: white !important;
+    }
+
+    .navbar {
+        display: none;
+
+    }
+
+    .title {
+        display: none;
+    }
+
+    .musicplayer {
+        display: none;
+    }
+
+    .content {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        /*width: 100%;*/
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+
+        padding-left: 0;
+        padding-right: 0;
+
+    }
+
+    #area-content-above {
+
+        height: 100%;
+
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+        margin: 0px;
+
+
+    }
+
+    #area-content {
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+
+    .show {
+        opacity: 1;
+        color: #141414 !important;
+        border: none;
+        background-color: #ffffff;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        box-shadow: none;
+
+    }
+
+    .show:hover {
+        opacity: 1;
+        color: inherit !important;
+
+    }
+
+    #navbar-burger {
+        background-color: black;
+        display: block;
+        z-index: 10;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 0px;
+        margin: 10px;
+        overflow: hidden;
+        max-height: 40px;
+        max-width: 70px;
+        border: double;
+        border-color: white;
+        transition: max-height 0.2s ease, max-width 0.2s ease;
+    }
+
+    #burger-title {
+        margin: 0;
+        color: white;
+    }
+
+    #burger-title.hide {
+        display: none;
+    }
+
+    #navbar-burger.open {
+        padding: 10px;
+        max-width: 200px;
+
+        max-height: 200px;
+        overflow: hidden;
+        transition: max-height 0.2s ease, max-width 0.2s ease;
+    }
+
+
+
+}

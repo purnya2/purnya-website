@@ -1,0 +1,99 @@
+<div id="banner" style=" background-color: rgb(0, 0, 0);
+                                background-position: center center; 
+                                background-attachment: local;
+                                background-repeat: no-repeat; 
+                                background-size:cover;
+                                height:150px;
+                                width: 100% ;
+                                position:relative;
+                                padding:0;
+                                ">
+
+    <h2 style=" color:rgb(255, 255, 255); font-size:40px; position:absolute; bottom:-10px; left:0; margin:0;"
+        class="text_with_border boop"> My
+        Drawings</h2>
+</div>
+<hr>
+<div class="folder_hierarchy">
+    <p><i>./drawings/</i></p>
+
+</div>
+
+<hr>
+<div class="grid-container" style="padding:10px">
+
+    <div id="grid-container">
+
+    </div>
+
+</div>
+<!--div class="grid-item folder"><a>/Rusty_Pina</a></div>
+        <div class="grid-item folder"><a>/Random_OC</a></div>
+        <div class="grid-item folder"><a>/Sketches</a></div>
+        <div class="grid-item folder"><a>/Robot_Stuff</a></div>
+        <div class="grid-item folder"><a>/Sonic_Fanart</a></div>
+        <div class="grid-item folder"><a>/Homestuck_Fanart</a></div>
+        <div class="grid-item folder"><a>/Edgy_Hoodie_Dipshit</a></div>
+        <div-- class="grid-item folder"><a>/Random_Fanart</a></div-->
+</div>
+<hr>
+<style>
+    #grid-container {
+        display: inline-grid;
+        grid-template-columns: auto auto auto;
+    }
+
+    .grid-item {
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        padding: 5px;
+        margin: 30px;
+        font-size: 10px;
+        height: 60px;
+        width: 60px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center top -9px;
+        position: relative;
+        text-align: center;
+        background-image: url('/assets/images/folder.png');
+
+    }
+
+    .grid-item a {
+        white-space: nowrap;
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        right: 0;
+
+    }
+
+    .folder_hierarchy p::before {
+        content: '';
+        display: inline-block;
+        width: 30px;
+        /* Adjust width of the icon */
+        height: 30px;
+        /* Adjust height of the icon */
+        margin-left: 10px;
+        /* Space between the text and the icon */
+        margin-right: 10px;
+        /* Space between the text and the icon */
+
+        background-image: url('assets/images/folder-hierarchy.png');
+        /* Path to the GitHub logo */
+        background-size: contain;
+        /* Scales the image to fit the box */
+        background-position: center;
+        /* Centers the image */
+        vertical-align: middle;
+    }
+
+    .folder {
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        cursor: pointer;
+
+    }
+</style>

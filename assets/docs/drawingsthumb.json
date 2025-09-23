@@ -1,0 +1,159 @@
+{
+    "rusty_pina": {
+        "images": [
+            {
+                "image_url": "https://art.ngfiles.com/images/3315000/3315106_purna232_fishing-on-a-decadent-but-weirdly-functional-bus-stop.jpg?f1688709124",
+                "redirect_url": "https://www.newgrounds.com/art/view/purna232/fishing-on-a-decadent-but-weirdly-functional-bus-stop",
+                "title": "rusty fishing",
+                "description": "fishing on a decadent but weirdly functional bus stop",
+                "position": [
+                    25,
+                    50
+                ],
+                "height": 500,
+                "tags": [
+                    "rustypina",
+                    "nature"
+                ],
+                "image_thumb": "assets/images/drawings/thumbs/rusty_fishing.webp"
+            },
+            {
+                "image_url": "https://art.ngfiles.com/images/3315000/3315341_purna232_pina-s-shelter.png?f1688724138",
+                "redirect_url": "https://www.newgrounds.com/art/view/purna232/pina-s-shelter",
+                "title": "pina's shelter",
+                "description": "rusty pays a visit to their friend pina",
+                "position": [
+                    400,
+                    50
+                ],
+                "height": 500,
+                "tags": [
+                    "rustypina",
+                    "nature"
+                ],
+                "image_thumb": "assets/images/drawings/thumbs/pina's_shelter.webp"
+            }
+        ]
+    },
+    "nepeta": {
+        "images": [
+            {
+                "image_url": "https://files.catbox.moe/3g6sed.png",
+                "title": "adventure ready",
+                "description": "ready for the next adventure",
+                "position": [
+                    550,
+                    0
+                ],
+                "height": 800,
+                "rotation": -3,
+                "tags": [
+                    "nepeta",
+                    "adventure",
+                    "ready"
+                ],
+                "image_thumb": "assets/images/drawings/thumbs/adventure_ready.webp"
+            },
+            {
+                "image_url": "https://files.catbox.moe/gunu69.png",
+                "title": "old drawing",
+                "description": "what's got nepeta's attention?",
+                "position": [
+                    100,
+                    -300
+                ],
+                "width": 390,
+                "height": "auto",
+                "rotation": 5,
+                "tags": [
+                    "nepeta",
+                    "curious",
+                    "attention"
+                ],
+                "image_thumb": "assets/images/drawings/thumbs/old_drawing.webp"
+            },
+            {
+                "image_url": "https://files.catbox.moe/8ju970.png",
+                "title": "oh god oh fuck",
+                "description": "nepeta taking a well-deserved nap",
+                "position": [
+                    -400,
+                    150
+                ],
+                "width": 320,
+                "height": "auto",
+                "rotation": -4,
+                "tags": [
+                    "nepeta",
+                    "sleepy",
+                    "cute"
+                ],
+                "image_thumb": "assets/images/drawings/thumbs/oh_god_oh_fuck.webp"
+            },
+            {
+                "image_url": "https://files.catbox.moe/1wozew.png",
+                "title": "Noodleta",
+                "description": "nepeta in a peaceful setting",
+                "position": [
+                    -450,
+                    -160
+                ],
+                "width": 250,
+                "height": "auto",
+                "rotation": 2,
+                "tags": [
+                    "nepeta",
+                    "cozy",
+                    "peaceful"
+                ],
+                "image_thumb": "assets/images/drawings/thumbs/Noodleta.webp"
+            },
+            {
+                "image_url": "https://files.catbox.moe/0jpb2f.png",
+                "title": "noodleta 2",
+                "description": "that classic nepeta expression",
+                "position": [
+                    -270,
+                    -250
+                ],
+                "width": 180,
+                "height": "auto",
+                "rotation": -3,
+                "tags": [
+                    "nepeta",
+                    "expression",
+                    "mischief"
+                ],
+                "image_thumb": "assets/images/drawings/thumbs/noodleta_2.webp"
+            },
+            {
+                "image_url": "https://art.ngfiles.com/images/6907000/6907395_2262846_purnya_untitled-6907395.f7d8d28e7340f6a9e6a1b8871c7ec699.jpg?f1753863093",
+                "title": "Nep playin",
+                "position": [
+                    0,
+                    100
+                ],
+                "width": 600,
+                "rotation": 2,
+                "tags": [],
+                "image_thumb": "assets/images/drawings/thumbs/Nep_playin.webp"
+            },
+            {
+                "image_url": "https://art.ngfiles.com/images/5137000/5137097_106240_purnya_nnep-d.fec0071f39902d9a0f29f0f6b894aa01.webp?f1697621942",
+                "title": "being silly",
+                "position": [
+                    350,
+                    -100
+                ],
+                "width": 300,
+                "height": "auto",
+                "rotation": -4,
+                "tags": [],
+                "image_thumb": "assets/images/drawings/thumbs/being_silly.webp"
+            }
+        ],
+        "notes": {
+            "msg": "lol hi"
+        }
+    }
+}

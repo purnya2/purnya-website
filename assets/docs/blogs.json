@@ -1,0 +1,13 @@
+{
+    "blogs": [
+        {
+            "title": "first blog",
+            "date": "2025-09-15T00:00:00Z",
+            "description": "Testing with my first blog",
+            "tags": [
+                "something"
+            ],
+            "contentUrl": "first_blog"
+        }
+    ]
+}
