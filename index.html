@@ -62,6 +62,7 @@
 
 
 
+
         <!--img src="assets/images/purnya.gif" alt="Sticker" class="sticker" id="purnya"
             onclick="playAudio('www.myinstants.com/media/sounds/burpss.mp3');"-->
 
@@ -169,8 +170,10 @@
 
 
     <script>
-        // Preloading logic
 
+
+
+        // Preloading logic
         const areasDict = new Map();
         const stickersDict = new Map();
         const componentsDict = new Map();
@@ -235,9 +238,6 @@
         }
 
         preloadAreas(areasToPreload);
-
-    </script>
-    <script>
 
 
         function toggleFullHeight() {
@@ -318,7 +318,6 @@
         function playAudio(str, classname = "ui-sfx", volume = 0.5) {
             const audio = new Audio(str);
             audio.volume = volume;
-            console.log(audio.src)
             if (!window.enableSounds && classname == "ui-sfx") {
                 return;
             }
@@ -329,10 +328,6 @@
 
 
 
-
-    </script>
-
-    <script>
 
         function changeArea(area_name) {
 
@@ -402,11 +397,6 @@
             return new Promise(resolve => setTimeout(resolve, ms));
         }
 
-
-
-    </script>
-
-    <script>
 
 
 
@@ -511,10 +501,10 @@
 
 
     </script>
-
-
-
-
 </body>
+
+
+
+
 
 </html>

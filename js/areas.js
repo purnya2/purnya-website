@@ -64,7 +64,6 @@ function walkTheFish() {
 
 // Drawings area functionality
 export function initializeDrawings() {
-    console.log("Initializing drawings gallery");
 
     insertFolders().then((data) => {
         let isWorking = addListeners(data);
@@ -440,12 +439,10 @@ function toggleImageContainer(imageContainer) {
 // Blog area functionality (handled in main index.html)
 export function initializeBlog() {
     // Blog initialization is handled by insertBlogs() in the main file
-    console.log("Blog area initialized");
 }
 
 // Placeholder initializers for other areas
 export function initializeProjects() {
-    console.log("Projects area initialized");
 }
 
 export function initializeWhoAreYou() {
@@ -471,7 +468,6 @@ export function initializeWhoAreYou() {
 }
 
 export function initializeAnythingElse() {
-    console.log("Anything else area initialized");
 
     const audioElement = document.getElementById('thinking-music');
     const volumeSlider = document.getElementById('volume-slider');
@@ -524,7 +520,6 @@ export function initializeAnythingElse() {
 }
 
 export function initializeBalenciaga() {
-    console.log("Balenciaga area initialized");
 }
 
 // TODO this should be imported from utils.js or something of the sorts

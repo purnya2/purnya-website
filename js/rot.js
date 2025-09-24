@@ -74,17 +74,13 @@ function updateElements() {
                     currentDist = lerp(currentDist, dist, 0.1) / dampener;
 
 
-                    element.style.transform = 'rotate3d(' + currentYRot + ', ' + currentXRot + ', 0, ' + currentDist + 'rad)';
-                    element.style.transform += 'translate(' + currentXRot * 20 + 'px,' + currentYRot * -20 + 'px)';
+                    element.style.transform = `translate3d(${currentXRot * 20}px, ${currentYRot * -20}px, 0) rotate3d(${currentYRot}, ${currentXRot}, 0, ${currentDist}rad)`;
                 } else {
                     currentXRot = lerp(currentXRot, 0, 0.1);
                     currentYRot = lerp(currentYRot, 0, 0.1);
                     currentDist = lerp(currentDist, 0, 0.1);
 
-                    element.style.transform = 'rotate3d(' + currentYRot + ', ' + currentXRot + ', 0, ' + currentDist + 'rad)';
-                    element.style.transform += 'translate(' + currentXRot * 20 + 'px,' + currentYRot * -20 + 'px)';
-
-
+                    element.style.transform = `translate3d(${currentXRot * 20}px, ${currentYRot * -20}px, 0) rotate3d(${currentYRot}, ${currentXRot}, 0, ${currentDist}rad)`;
                 }
 
                 data[0] = currentXRot;
@@ -93,8 +89,7 @@ function updateElements() {
             });
         } else {
             elements.forEach((element, index) => {
-                element.style.transform = 'rotate3d(' + 0 + ', ' + 0 + ', 0, ' + 0 + 'rad)';
-                element.style.transform += 'translate(' + 0 + 'px, ' + 0 + 'px)';
+                element.style.transform = 'translate3d(0px, 0px, 0) rotate3d(0, 0, 0, 0rad)';
             });
         }
 
@@ -102,6 +97,12 @@ function updateElements() {
     requestAnimationFrame(updateElements);
 
 };
+
+function smoothstep(edge0, edge1, x) {
+    x = clamp((x - edge0) / (edge1 - edge0), 0, 1);
+    return x * x * (3.0 - 2.0 * x)
+}
+
 function clamp(value, min, max) {
     return Math.min(Math.max(value, min), max);
 }
