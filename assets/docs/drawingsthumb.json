@@ -2,43 +2,268 @@
     "rusty_pina": {
         "images": [
             {
-                "image_url": "https://art.ngfiles.com/images/3315000/3315106_purna232_fishing-on-a-decadent-but-weirdly-functional-bus-stop.jpg?f1688709124",
-                "redirect_url": "https://www.newgrounds.com/art/view/purna232/fishing-on-a-decadent-but-weirdly-functional-bus-stop",
+                "image_src": "assets/images/drawings/rusty_pina/rusty_fishing.png",
                 "title": "rusty fishing",
                 "description": "fishing on a decadent but weirdly functional bus stop",
                 "position": [
-                    25,
-                    50
+                    1000,
+                    0
                 ],
-                "height": 500,
+                "height": 600,
                 "tags": [
                     "rustypina",
                     "nature"
-                ],
-                "image_thumb": "assets/images/drawings/thumbs/rusty_fishing.webp"
+                ]
             },
             {
-                "image_url": "https://art.ngfiles.com/images/3315000/3315341_purna232_pina-s-shelter.png?f1688724138",
-                "redirect_url": "https://www.newgrounds.com/art/view/purna232/pina-s-shelter",
+                "image_src": "assets/images/drawings/rusty_pina/pina_shelter.png",
                 "title": "pina's shelter",
                 "description": "rusty pays a visit to their friend pina",
                 "position": [
-                    400,
-                    50
+                    -1000,
+                    0
+                ],
+                "height": 600,
+                "tags": [
+                    "rustypina",
+                    "nature"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/rusty_pina/modifiedcar.jpg",
+                "title": "pina's modified car",
+                "description": "rusty pays a visit to their friend pina",
+                "position": [
+                    1000,
+                    600
+                ],
+                "height": 600,
+                "tags": [
+                    "rustypina",
+                    "nature"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/rusty_pina/frends.png",
+                "title": "frends",
+                "description": "",
+                "position": [
+                    0,
+                    0
                 ],
                 "height": 500,
                 "tags": [
                     "rustypina",
                     "nature"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/rusty_pina/crabby.png",
+                "title": "crab",
+                "description": "",
+                "position": [
+                    -510,
+                    0
                 ],
-                "image_thumb": "assets/images/drawings/thumbs/pina's_shelter.webp"
+                "rotation": -2,
+                "height": 500,
+                "tags": [
+                    "rustypina",
+                    "nature"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/rusty_pina/fishin.png",
+                "title": "fishin",
+                "description": "",
+                "position": [
+                    510,
+                    0
+                ],
+                "rotation": 2,
+                "height": 500,
+                "tags": [
+                    "rustypina",
+                    "nature"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/rusty_pina/1518.jpg",
+                "title": "15 + 18 quanto fa",
+                "description": "",
+                "position": [
+                    510,
+                    500
+                ],
+                "rotation": 2,
+                "height": 500,
+                "tags": [
+                    "rustypina",
+                    "nature"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/rusty_pina/giraffe.png",
+                "title": "giraffe",
+                "description": "",
+                "position": [
+                    0,
+                    500
+                ],
+                "rotation": -1,
+                "height": 500,
+                "tags": [
+                    "rustypina",
+                    "nature"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/rusty_pina/justrusty.png",
+                "title": "hey rusty",
+                "description": "",
+                "position": [
+                    -510,
+                    500
+                ],
+                "rotation": 3,
+                "height": 500,
+                "tags": [
+                    "rustypina",
+                    "nature"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/rusty_pina/nofishing.jpg",
+                "title": "nofishing",
+                "description": "",
+                "position": [
+                    -510,
+                    -500
+                    
+                ],
+                "rotation": 2,
+                "height": 500,
+                "tags": [
+                    "rustypina",
+                    "nature"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/rusty_pina/shop.png",
+                "title": "shop sole",
+                "description": "",
+                "position": [
+                    0,
+                    -500
+                    
+                ],
+                "rotation": 2,
+                "height": 500,
+                "tags": [
+                    "rustypina",
+                    "nature"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/rusty_pina/sound.png",
+                "title": "what a melody",
+                "description": "",
+                "position": [
+                    510,
+                    -500
+                    
+                ],
+                "rotation": 2,
+                "height": 500,
+                "tags": [
+                    "rustypina",
+                    "nature"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/rusty_pina/spidersss.png",
+                "title": "curious spiders",
+                "description": "",
+                "position": [
+                    510,
+                    -500
+                    
+                ],
+                "rotation": 2,
+                "height": 500,
+                "tags": [
+                    "rustypina",
+                    "nature"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/rusty_pina/swampy.jpg",
+                "title": "swamp",
+                "description": "",
+                "position": [
+                    -250,
+                    1000
+                    
+                ],
+                "rotation": 2,
+                "height": 500,
+                "tags": [
+                    "rustypina",
+                    "nature"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/rusty_pina/wherearewe.png",
+                "title": "where are we?",
+                "description": "",
+                "position": [
+                    250,
+                    1000
+                    
+                ],
+                "rotation": -1,
+                "height": 500,
+                "tags": [
+                    "rustypina",
+                    "nature"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/rusty_pina/passingbyfriend.jpg",
+                "title": "passing by, friend",
+                "description": "",
+                "position": [
+                    1000,
+                    -500
+                ],
+                "rotation": 2,
+                "height": 500,
+                "tags": [
+                    "rustypina",
+                    "nature"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/rusty_pina/refreshingrobot.jpg",
+                "title": "refreshing robot",
+                "description": "",
+                "position": [
+                    -1000,
+                    -500
+                ],
+                "rotation": -2,
+                "height": 500,
+                "tags": [
+                    "rustypina",
+                    "nature"
+                ]
             }
         ]
     },
     "nepeta": {
         "images": [
             {
-                "image_url": "https://files.catbox.moe/3g6sed.png",
+                "image_src": "assets/images/drawings/nepeta/adventure_ready.webp",
                 "title": "adventure ready",
                 "description": "ready for the next adventure",
                 "position": [
@@ -51,11 +276,10 @@
                     "nepeta",
                     "adventure",
                     "ready"
-                ],
-                "image_thumb": "assets/images/drawings/thumbs/adventure_ready.webp"
+                ]
             },
             {
-                "image_url": "https://files.catbox.moe/gunu69.png",
+                "image_src": "assets/images/drawings/nepeta/old_drawing.webp",
                 "title": "old drawing",
                 "description": "what's got nepeta's attention?",
                 "position": [
@@ -69,11 +293,10 @@
                     "nepeta",
                     "curious",
                     "attention"
-                ],
-                "image_thumb": "assets/images/drawings/thumbs/old_drawing.webp"
+                ]
             },
             {
-                "image_url": "https://files.catbox.moe/8ju970.png",
+                "image_src": "assets/images/drawings/nepeta/oh_god_oh_fuck.webp",
                 "title": "oh god oh fuck",
                 "description": "nepeta taking a well-deserved nap",
                 "position": [
@@ -87,11 +310,10 @@
                     "nepeta",
                     "sleepy",
                     "cute"
-                ],
-                "image_thumb": "assets/images/drawings/thumbs/oh_god_oh_fuck.webp"
+                ]
             },
             {
-                "image_url": "https://files.catbox.moe/1wozew.png",
+                "image_src": "assets/images/drawings/nepeta/Noodleta.webp",
                 "title": "Noodleta",
                 "description": "nepeta in a peaceful setting",
                 "position": [
@@ -105,11 +327,10 @@
                     "nepeta",
                     "cozy",
                     "peaceful"
-                ],
-                "image_thumb": "assets/images/drawings/thumbs/Noodleta.webp"
+                ]
             },
             {
-                "image_url": "https://files.catbox.moe/0jpb2f.png",
+                "image_src": "assets/images/drawings/nepeta/noodleta_2.webp",
                 "title": "noodleta 2",
                 "description": "that classic nepeta expression",
                 "position": [
@@ -123,11 +344,10 @@
                     "nepeta",
                     "expression",
                     "mischief"
-                ],
-                "image_thumb": "assets/images/drawings/thumbs/noodleta_2.webp"
+                ]
             },
             {
-                "image_url": "https://art.ngfiles.com/images/6907000/6907395_2262846_purnya_untitled-6907395.f7d8d28e7340f6a9e6a1b8871c7ec699.jpg?f1753863093",
+                "image_src": "assets/images/drawings/nepeta/nep_playing.png",
                 "title": "Nep playin",
                 "position": [
                     0,
@@ -135,11 +355,10 @@
                 ],
                 "width": 600,
                 "rotation": 2,
-                "tags": [],
-                "image_thumb": "assets/images/drawings/thumbs/Nep_playin.webp"
+                "tags": []
             },
             {
-                "image_url": "https://art.ngfiles.com/images/5137000/5137097_106240_purnya_nnep-d.fec0071f39902d9a0f29f0f6b894aa01.webp?f1697621942",
+                "image_src": "assets/images/drawings/nepeta/nep_being_silly.png",
                 "title": "being silly",
                 "position": [
                     350,
@@ -148,8 +367,112 @@
                 "width": 300,
                 "height": "auto",
                 "rotation": -4,
-                "tags": [],
-                "image_thumb": "assets/images/drawings/thumbs/being_silly.webp"
+                "tags": []
+            },
+            {
+                "image_src": "assets/images/drawings/nepeta/hey.jpg",
+                "title": "hey",
+                "description": "",
+                "position": [
+                    0,
+                    -700
+                ],
+                "width": 500,
+                "height": "auto",
+                "rotation": 3,
+                "tags": [
+                    "nepeta"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/nepeta/helloo.png",
+                "title": "helloo",
+                "description": "",
+                "position": [
+                    -800,
+                    400
+                ],
+                "width": 500,
+                "height": "auto",
+                "rotation": -2,
+                "tags": [
+                    "nepeta"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/nepeta/futuristicnep.jpg",
+                "title": "futuristic nep",
+                "description": "",
+                "position": [
+                    800,
+                    400
+                ],
+                "width": 500,
+                "height": "auto",
+                "rotation": 2,
+                "tags": [
+                    "nepeta"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/nepeta/musiclistening.jpg",
+                "title": "music listening",
+                "description": "",
+                "position": [
+                    -800,
+                    -400
+                ],
+                "width": 500,
+                "height": "auto",
+                "rotation": -3,
+                "tags": [
+                    "nepeta"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/nepeta/noodleeatin.png",
+                "title": "noodle eatin",
+                "description": "",
+                "position": [
+                    800,
+                    -400
+                ],
+                "width": 500,
+                "height": "auto",
+                "rotation": 4,
+                "tags": [
+                    "nepeta"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/nepeta/sketchnep.jpg",
+                "title": "sketch nep",
+                "description": "",
+                "position": [
+                    -250,
+                    700
+                ],
+                "width": 500,
+                "height": "auto",
+                "rotation": -2,
+                "tags": [
+                    "nepeta"
+                ]
+            },
+            {
+                "image_src": "assets/images/drawings/nepeta/welldressed.jpg",
+                "title": "well dressed",
+                "description": "",
+                "position": [
+                    400,
+                    700
+                ],
+                "width": 500,
+                "height": "auto",
+                "rotation": 1,
+                "tags": [
+                    "nepeta"
+                ]
             }
         ],
         "notes": {

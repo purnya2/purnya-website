@@ -1,8 +1,7 @@
 // areas.js - Area-specific functionality
 // This file contains the JavaScript functionality for each area page
 
-// Index area functionality
-export function initializeIndex() {
+export function initializeHome() {
     walkTheFish();
     stayOnTopFish();
     document.getElementById('fish').addEventListener('click', () => {
@@ -66,11 +65,11 @@ function walkTheFish() {
 export function initializeDrawings() {
 
     insertFolders().then((data) => {
-        let isWorking = addListeners(data);
+        let isWorking = addListenersToDrawings(data);
         if (isWorking) {
-            const nepetaElement = document.getElementById("nepeta");
-            if (nepetaElement) {
-                nepetaElement.click();
+            const testElement = document.getElementById("rusty_pina");
+            if (testElement) {
+                testElement.click();
             }
         }
     });
@@ -93,7 +92,11 @@ async function insertFolders() {
     return data;
 }
 
-function addListeners(data) {
+function addListenersToDrawings(data) {
+
+    // Am I working or not?
+    let working = false
+
     const gallery = document.getElementById('gallery');
     if (!gallery) return false;
 
@@ -112,8 +115,13 @@ function addListeners(data) {
         }
     }, { passive: false })
 
-    // Am I working or not?
-    let working = false
+
+    gallery.addEventListener('mousemove', (event) => {
+        if (event.buttons === 1 && !window.clickedImage && !window.isFocusingOnImage) {
+            gallery.scrollLeft -= event.movementX;
+            gallery.scrollTop -= event.movementY;
+        }
+    });
 
     const folders = document.querySelectorAll('.grid-item');
 
@@ -159,6 +167,15 @@ function addListeners(data) {
         folder.addEventListener('click', (event) => {
             playAudio("/assets/audio/sfx/opengallery.wav");
 
+
+            window.clickedImage = false;
+            window.isFocusingOnImage = false;
+            window.galleryscale = 1;
+            window.galleryscaleTarget = 1;
+
+            const galleryContentEl = document.querySelector('.gallery-content');
+            if (galleryContentEl) galleryContentEl.style.transform = '';
+
             const gallerySelectedOverlay = document.createElement('div');
             gallerySelectedOverlay.id = 'gallery-selected-overlay';
             gallerySelectedOverlay.className = 'gallery-selected-overlay';
@@ -188,11 +205,10 @@ function addListeners(data) {
                 imageContainer.style.position = "absolute";
                 imageContainer.style.transform = `rotate(${image.rotation}deg)`;
                 imageContainer.style.userSelect = "none";
-                imageContainer.image_url = image.image_url;
 
                 const img = document.createElement("img");
                 img.className = "gallery-image"
-                img.src = image.image_thumb;
+                img.src = image.image_src;
                 img.draggable = false;
 
                 if (image.width == "auto" || image.width === undefined) {
@@ -238,19 +254,37 @@ function addListeners(data) {
                     imageContainer.width = width;
                     imageContainer.height = height;
 
-                    imageContainer.addEventListener('mousedown', () => {
+                    imageContainer.addEventListener('dragstart', (event) => event.preventDefault());
+
+
+                    imageContainer.addEventListener('mousedown', (event) => {
+                        if (event.button !== 0) return;
+
+                        const startX = event.clientX;
+                        const startY = event.clientY;
+                        let moved = false;
+
+
+                        const onMove = (moveEvent) => {
+                            if (Math.abs(moveEvent.clientX - startX) > 4 ||
+                                Math.abs(moveEvent.clientY - startY) > 4) {
+                                moved = true;
+                                window.clickedImage = false; 
+                            }
+                        };
+
+                        const onUp = () => {
+                            window.removeEventListener('mousemove', onMove, true);
+                            window.removeEventListener('mouseup', onUp);
+                            window.clickedImage = false;
+                            if (!moved) {
+                                toggleImageContainer(imageContainer);
+                            }
+                        };
+
                         window.clickedImage = true;
-                    });
-
-                    imageContainer.addEventListener('mousemove', () => {
-                        window.clickedImage = false;
-                    });
-
-                    imageContainer.addEventListener('mouseup', () => {
-                        if (window.clickedImage || window.isFocusingOnImage) {
-                            toggleImageContainer(imageContainer);
-                        }
-                        window.clickedImage = false;
+                        window.addEventListener('mousemove', onMove, true);
+                        window.addEventListener('mouseup', onUp);
                     });
                 }
             });
@@ -314,13 +348,6 @@ function addListeners(data) {
             // Center the scroll position
             galleryOverlay.scrollLeft = (galleryContent.scrollWidth) / 2 - galleryOverlay.clientWidth / 2;
             galleryOverlay.scrollTop = (galleryContent.scrollHeight) / 2 - (viewportHeight * 80 / 100) / 2;
-
-            galleryOverlay.addEventListener('mousemove', (event) => {
-                if (event.buttons === 1 && !window.clickedImage && !window.isFocusingOnImage) {
-                    galleryOverlay.scrollLeft -= event.movementX;
-                    galleryOverlay.scrollTop -= event.movementY;
-                }
-            });
         });
     });
 
@@ -512,7 +539,8 @@ export function initializeAnythingElse() {
 
     anime({
         targets: '#banner-anything-else',
-        translateY: [5, -10],
+        opacity: [0, 1],
+        translateY: [10, -10],
         duration: 10000,
         easing: 'easeOutCirc',
     });
@@ -526,7 +554,7 @@ export function initializeBalenciaga() {
 // should be generated based on the filesystem
 // Area initialization mapping
 export const areaInitializers = {
-    'index': initializeIndex,
+    'home': initializeHome,
     'drawings': initializeDrawings,
     'blog': initializeBlog,
     'projects': initializeProjects,

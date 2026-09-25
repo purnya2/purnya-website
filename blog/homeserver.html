@@ -1,0 +1,148 @@
+<div>
+    <h3 style="color:black; font-size:40px; margin: 10px; ">My Homeserver!! Part 0</h3>
+</div>
+
+<hr class="wave">
+
+<div>
+    <p style="font-style: italic; font-size: 15px; background: rgba(246, 226, 138, 0.8); padding:4px">Disclaimer : I'm not a good writer, and I don't know what I'm doing, don't replicate what I did 1:1, if you want
+        to have a homeserver as well, get inspired to do better than me! This is not a straightforward tutorial, im just blogging around, yapping blabbering bubbering. Didn't even finish properly the article
+    </p>
+    <h3 class="linedivider5pxdouble">0.0 ORIGIN</h3>
+    <p>
+        A while back I've had the luck of obtaining a shit crappy laptop from my father, a <span class="inline_code">Swift SF314-54</span>. 
+        Its specs were really nothing extraordinary:
+        <ul style="background: rgb(0, 0, 0); padding: 10px;">
+            <li><span class="inline_code" style="background-color: black; color:white"><span style="font-weight: bold; color:rgb(245, 60, 60)">CPU:</span> Intel(R) Core(TM) i3-8130U (4) @ 3.40 GHz</span></li>
+            <li><span class="inline_code" style="background-color: black; color:white"><span style="font-weight: bold; color:rgb(245, 60, 60)">GPU:</span> Intel UHD Graphics 620 @ 1.00 GHz [Integrated]</span></li>
+            <li><span class="inline_code" style="background-color: black; color:white"><span style="font-weight: bold; color:rgb(245, 60, 60)">RAM:</span> 8GB</span></li>
+            <li><span class="inline_code" style="background-color: black; color:white"><span style="font-weight: bold; color:rgb(245, 60, 60)">Storage:</span> 512GB SSD</span></li>
+        </ul>
+
+        At the same time I was also recently rejected from a job position at a shit fintech company after I endured an unpaid+underpaid internship of 6 months.<span style="font-style: italic; font-size: 12px;">sigh...</span>
+    </p>
+        So I became officially <b>unemployed</b>, great! And what do the unemployed do? I had so much free time to lose, let's run through what possibilities were open to me through that unfortunate event:
+        <ul style="margin-top: 5px;">
+            <li>Develop substance abuse</li>
+            <li>Finish my thesis that was due less than a week</li>
+            <li>End my life by shooting myself in front of the CEO of that shit company</li>
+            <li>Develop skills that are useful for all my life</li>
+        </ul>
+        What I ultimately decided was worse than substance abuse, I started dedicating 99%+ of my time setting up and configurating a homeserver with
+        that very laptop.  <br>
+        Receiving it during that time was a blessing because spending time on it became effectively a great coping mechanism! Each project idea, bug, configuration, completely absorbed
+        my mind and it made sure that my brain's process scheduler never gave any time to post-layoff depression.
+    <p></p>
+
+    <h3 class="linedivider5pxdouble">1.0 THE ENVIRONMENT</h3>
+
+    <p>
+        My homeserver runs on a <span class="inline_code">Debian GNU/Linux 13 (trixie) x86_64</span> installation.
+        <br>
+        <img src="../assets/images/blog/fastfetch.png">
+        <br>
+        Since it's a server, I installed a <u>headless</u> version of Debian, which means that it doesn't
+        have any graphical interface. You could be asking yourself, "but p, that's so confusing" that consumes unnecessary cpu/gpu cycles on drawing windows, and it just shows me a terminal upon boot.
+        <details class="useless_details">
+            <summary style="margin: 0; padding-left:10px; background: rgba(200, 220, 176); width: 160px; font-size: 15px; border: solid black 2px; cursor: pointer;">useless_details </summary>
+            <p>
+            I had to go through a huge hassle to install it, not because the installation itself was difficult,
+            but because in the big year of 2025 I didn't have a USB stick lying anywhere, so what I did was using an 
+            external SSD that I had as a Dr. House archiver, delete all of its contents, and use it as a bootable Debian installer.
+            </p>
+        </details>
+        <br>
+        <h4  style="margin-bottom: 10px;" class="linedivider1px">1.1 Laptop Issues</h4>
+        Since I'm trying to use a laptop as a server, I needed to solve these two problems:
+        <br>
+
+        <h5 style="margin-bottom: 0; border: solid 1px black;" >1. The Battery</h5>
+        <p style="margin-top: 0; ">
+            The laptop as a server is supposed to be always on, which means that 
+            it's constantly plugged in. Needless to say but it is not good to have your 
+            battery constantly charging all the time, since it leads to overheating,
+            makes the battery swollen and therefore cause a massive explosion in your house!! Oh nouh!<br>
+            So what I did is simply open up the laptop and disconnect the battery, so now the laptop
+            runs always on AC.
+        </p>
+
+        <h5 style="margin-bottom: 0;border: solid 1px black;" >2. The lid, the display</h5>
+        <p style="margin-top: 0;">
+            Having the laptop's lid open at all times is not ideal, and so is having the display always on, the power consumption
+            of the light is outrageous! I needed a way to have the lid closed, turn off the display but still have it run as normal. <br>
+            To solve this, I edited the file <span class="inline_code">/etc/systemd/logind.conf</span> and set the following parameters:
+            <div class="code-block" >
+            <pre>
+<code class="language-dsconfig" >
+/* ... */
+HandleLidSwitch=lock
+HandleLidSwitchExternalPower=lock
+HandleLidSwitchDocked=ignore
+/* ... */
+
+</code>
+            </pre>
+            </div>
+            What these essentially do is to lock your laptop when you close the lid,
+            in order to turn off the display, but not to put it to sleep. This way all of the services can keep running without 
+            using too much power!
+            <br>
+            <br>
+            <div class="fun_info">
+                <p> <span class="inline_code">/etc/systemd/logind.conf</span> : It's one of the configurations files of the <a target="_blank" rel="noopener noreferrer" href="https://systemd.io/">systemd login manager</a>. What this means
+                is that this contains settings that control how the login manager behaves when you login/logout, how the power is managed, how the session is managed etc. etc.</p>
+            </div>
+        </p>
+        <br>
+    </p>
+
+        </p>
+        <br>
+    </p>
+
+    <h3 class="linedivider5pxdouble">2.0 Applications</h3>
+    <p>
+        These are the services that I am currently running :
+        <div class="service-list">
+            <div class="service-element">
+                <span class="service-title">Jellyfin</span>
+                <p> A free and open-source media server, I mainly use it to host
+                    TV-series, movies and anime.
+                </p>
+            </div>
+            <div class="service-element">
+                <span class="service-title">Copyparty</span>
+                <p> A file server, a very cool and simple to setup one. It serves files, it can also
+                    modify files! 
+                </p>
+            </div>
+            <div class="service-element">
+                <span class="service-title">Navidrome</span>
+                <p>The service I use most, it's a music server. I have downloaded/purchased countless albums, put
+                    them all on my server and use this service to play them either on my browser, or using symfonium as a client on my phone!
+                    My goal was to use spotify less thanks to this, instead I just stopped using it altogether !.
+                </p>
+            </div>
+            <div class="service-element">
+                <span class="service-title">qBittorrent</span>
+                <p>Where do you think I get the anime and movies from heh.</p>
+            </div>
+            <div class="service-element">
+                <span class="service-title">Soulseek</span>
+                <p>Where do you think I get music from heh. </p>
+            </div>
+            <div class="service-element">
+                <span class="service-title">Kavita</span>
+                <p>Manga reader server, I don't use it much at this point, it's more for my gf to use
+                    when she wants to.
+                </p>
+            </div>
+
+            and many others... these are the ones I use most
+        </div>    
+    </p>
+</div>
+
+<h3 class="linedivider5pxdouble">3.0 Mhhhh</h3>
+Too lazy to write other stuff, next time I might explain how I managed to set up
+a dns hostname to access all of these services from anywhere! and more and more stuffs :p

@@ -1,6 +1,16 @@
 {
     "blogs": [
         {
+            "title": "homeservering",
+            "date": "2025-20-13T00:52:31Z",
+            "description": "I have a homeserver and it makes me very happy",
+            "tags": [
+                "dev",
+                "server"
+            ],
+            "contentUrl": "homeserver"
+        },
+        {
             "title": "first blog",
             "date": "2025-09-15T00:00:00Z",
             "description": "Testing with my first blog",
@@ -9,5 +19,6 @@
             ],
             "contentUrl": "first_blog"
         }
+        
     ]
 }

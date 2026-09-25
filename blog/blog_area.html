@@ -15,9 +15,39 @@
     <link rel="stylesheet" href="../css/fonts.css"> <!-- Fonts, duh -->
     <script src="../js/anime.min.js"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/srcery.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/dsconfig.min.js"></script>
+
+
     <style>
+        .fun_info{
+            background-color: rgb(172, 219, 234);
+            padding: 5px 15px;
+            border-radius: 5px;
+            border : double rgb(255, 255, 255) 5px;
+            font-size: small;
+        }
+        .fun_info .inline_code {
+            padding: 0px 2px;
+            background-color: rgba(255, 255, 255, 0.509);
+            border: solid black 1px;
+        }
+
+        
+        .useless_button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            font-size: inherit;
+
+        }
+
         .blog-preview-container {
-            margin: 10px;
+            margin: 15px;
             padding: 10px;
             border: 1px solid black;
         }
@@ -42,9 +72,9 @@
         }
 
         .go-back {
-            position: relative;
-            top: 0px;
-            right: -25px;
+            position: absolute;
+            left: -75px;
+            top: 20px;
             width: 50px;
             height: 50px;
             z-index: 10;
@@ -52,18 +82,49 @@
             color: white;
             font-size: 20px;
             text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-            background-color: aliceblue;
+            background-color: black;
             border: 2px solid black;
             box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.500);
             transition: 0.1s ease-in-out;
+            border: double white 2px;
+            padding: 2px;
         }
 
         .go-back:hover {
             transform: translate(2px, -2px);
             box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.500);
-            /* Add shadow on hover */
         }
 
+        .blogwrapper {
+            width: 80%;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .blog-background {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.954);
+            border: solid;
+            border-color: black;
+            border-width: 3px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            padding-bottom: 50px;
+            min-height: 500px;
+        }
+
+        #blog-bg {
+            background: url('../assets/images/backgrounds/blog.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            min-height: 100vh;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            overflow-y: auto;
+        }
 
 
 
@@ -73,39 +134,82 @@
             font-style: italic;
             color: rgb(82, 82, 82);
         }
+
+        .blogwrapper {
+            margin-top: 100px;
+        }
+
+        #blog-content {
+            margin: 0px 10px 0px 10px;
+
+        }
+
+        @media (max-width: 850px) {
+            .blogwrapper {
+                margin-top: 0px;
+                width: 100%;
+            }
+
+            #blog-bg {
+                background: none;
+                background-color: white;
+            }
+
+            .go-back {
+                position: fixed;
+
+                left: 10px;
+            }
+
+            #blog-content {
+                margin-top: 100px;
+            }
+
+            .blog-background {
+                position: relative;
+                background-color: rgba(255, 255, 255, 0.954);
+                border: none;
+                height: 100%;
+                box-shadow: none;
+            }
+
+            html {
+                border: double black 5px;
+            }
+        }
+
+        
     </style>
 
 </head>
 
-<body style="background-image: url('../assets/images/backgrounds/blog.jpg')">
+<body id="blog-bg" style="min-height: 100vh; height: auto;">
 
 
-    <div class="wrapper">
+
+    <div class="blogwrapper">
 
 
-        <div class="content">
-            <div class="go-back"><a href="/index.html?area=blog" style="text-decoration: none; color:white;">go back</a>
+        <div class="blog-background">
+            <div class="go-back boop"><a href="/index.html?area=blog"
+                    style="text-decoration: none; color:white;">&#8592;
+                    back</a>
             </div>
-            <div style="width: 100px;">
-
-            </div>
-            <div class="show">
-
-                <div style="margin: 0px 10px 0px 10px" id="blog-content">
-
-                </div>
+            <div id="blog-content">
 
             </div>
-
-            <div class="title">purnya's dump</div>
 
         </div>
+
+        <div class="title">purnya's dump</div>
+
     </div>
 
     <!-- Link to JavaScript files -->
 
 
     <script>
+
         const urlParams = new URLSearchParams(window.location.search);
         const myParam = urlParams.get('id');
 
@@ -120,6 +224,7 @@
 
                 // Insert the content into the div
                 targetDiv.innerHTML = content;
+                hljs.highlightAll();
             }
         });
 

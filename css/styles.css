@@ -24,9 +24,19 @@ body {
     scale: 0.9;
 }
 
-.mutebutton {
+.slight_boop:active {
+    scale: 0.96;
+}
+
+.sidebuttons {
     position: absolute;
     left: -50px;
+
+
+}
+
+.togglebutton {
+    position: absolute;
     width: 25px;
     height: 25px;
     background-color: rgba(255, 255, 255, 0.362);
@@ -34,10 +44,9 @@ body {
     border-radius: 50px;
     border: solid 2px rgb(255, 255, 255);
     color: white !important;
-
 }
 
-.mutebutton:hover {
+.togglebutton:hover {
 
     background-color: rgb(255, 255, 255);
     color: rgb(80, 80, 92) !important;
@@ -45,26 +54,7 @@ body {
 
 }
 
-.toggleanimation {
-    position: absolute;
-    left: -50px;
-    width: 25px;
-    height: 25px;
-    top: 50px;
-    background-color: rgba(255, 255, 255, 0.362);
-    padding: 5px;
-    border-radius: 50px;
-    border: solid 2px rgb(255, 255, 255);
-    color: white !important;
-}
 
-.toggleanimation:hover {
-
-    background-color: rgb(255, 255, 255);
-    color: rgb(80, 80, 92) !important;
-    cursor: pointer;
-
-}
 
 .wrapper {
     display: flex;
@@ -134,7 +124,7 @@ body {
     width: 200px;
     height: 200px;
     background-color: #ffffff;
-    font-size: small;
+    font-size: medium;
     border: 2px solid rgb(255, 255, 255);
     box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.500);
 
@@ -176,6 +166,7 @@ ul li:hover {
     color: #000000;
 }
 
+
 ul li a {
     text-decoration: none;
     color: #ffffff;
@@ -193,7 +184,15 @@ ul li a {
     cursor: pointer;
 }
 
+.navbar:hover ul li::before {
+    text-shadow: none;
+
+    content: "/";
+    color: #ffffff;
+}
+
 .navbar:hover ul li a {
+    text-shadow: none;
     text-decoration: none;
     color: #596e81 !important;
     cursor: pointer;
@@ -388,6 +387,19 @@ ul li a {
     filter: none;
 }
 
+.text_with_border_light {
+    text-shadow:
+        /* first layer at 1px */
+        -1px -1px 0px #404040,
+        0px -1px 0px #404040,
+        1px -1px 0px #404040,
+        -1px 0px 0px #404040,
+        1px 0px 0px #404040,
+        -1px 1px 0px #404040,
+        0px 1px 0px #404040,
+        1px 1px 0px #404040
+}
+
 .text_with_border {
     text-shadow:
         /* first layer at 1px */
@@ -508,6 +520,9 @@ ul li a {
 
 .gallery-content {
 
+
+    position: relative;
+
     width: 5000px;
     height: 5000px;
     overflow: scroll;
@@ -534,6 +549,11 @@ ul li a {
     transition: border 0.2s ease;
     background-color: white;
 
+}
+
+
+.gallery-image {
+    max-width: none;
 }
 
 .gallery-image-container {
@@ -618,6 +638,66 @@ ul li a {
     position: absolute;
 
 }
+
+img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.inline_code {
+    font-family:'Courier New', Courier, monospace;
+    background-color: rgba(183, 185, 193, 0.5);
+    padding: 1px 5px;
+    font-size: 0.95em;
+}
+
+
+
+
+.linedivider5pxdouble {
+    border-bottom: 5px double black;
+    margin: 10px 0;
+}
+
+.service-title {
+    display: block;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: rgb(67, 67, 67);
+}
+
+.service-list  p {
+    margin: 0;
+}
+
+.service-element {
+    margin-bottom: 10px;
+}
+
+.linedivider1px {
+    border-bottom: 1px solid black;
+    margin: 10px 0;
+}
+
+.useless_details {
+    background-color: rgb(222, 235, 213);
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    max-height: 150px;
+    padding:5px 20px;
+    border: solid black 2px;
+}
+
+
+
+.code-block code{
+    border-radius: 10px;
+    overflow-x: auto;
+    border: double 5px rgb(255, 255, 255);
+
+}
+
 
 @media (max-width: 850px) {
 
